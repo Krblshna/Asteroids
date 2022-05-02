@@ -1,15 +1,17 @@
 ﻿using System;
-using Asteroids.Utils;
+using Asteroids.Utility;
 using Asteroids.Weapon;
 using UnityEngine;
 
 namespace Asteroids.Player
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IDestructible
     {
+        private GroupType _groupType = GroupType.Ally;
         private IMovementController _movementController;
+        private WeaponController _weaponController;
         private IInput _input;
-        private IWeapon _weapon;
+        
         private float ship_size = 0.46f;
 
         void Awake()
@@ -18,22 +20,31 @@ namespace Asteroids.Player
             _input = GetComponent<IInput>();
             _movementController = GetComponent<IMovementController>();
             _movementController.Init(_input, body);
-            _weapon = GetComponentInChildren<IWeapon>();
+            _weaponController = GetComponentInChildren<WeaponController>();
+            _weaponController.Init(_input, _groupType);
+        }
+
+        public Rigidbody2D GetBody()
+        {
+            return GetComponent<Rigidbody2D>();
         }
         void Update()
         {
             _input.CustomUpdate();
+            _weaponController.CustomUpdate();
             transform.position = ScreenPortal.ValidatePos(transform.position, ship_size);
         }
 
         void FixedUpdate()
         {
             _movementController.CustomFixedUpdate();
+        }
 
-            if (_input.Fire)
-            {
-                _weapon.Fire();
-            }
+        public bool Hit(GroupType hitGroup)
+        {
+            if (hitGroup == _groupType) return false;
+            gameObject.SetActive(false);
+            return true;
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Asteroids.Player
         public bool Up { get; private set; }
         public bool Down { get; private set; }
         public bool Fire { get; private set; }
+        public bool AltFire { get; private set; }
         private float _minSensitivity = 0.3f;
         public void CustomUpdate()
         {
@@ -18,6 +19,7 @@ namespace Asteroids.Player
             Horizontal = Input.GetAxis("Horizontal");
             Vertical = Input.GetAxis("Vertical");
             Fire = Input.GetButton("Fire1");
+            AltFire = Input.GetButton("Fire2");
             if (Mathf.Abs(Horizontal) > _minSensitivity)
             {
                 Left = Horizontal < 0;
@@ -37,6 +39,7 @@ namespace Asteroids.Player
             Up = false;
             Down = false;
             Fire = false;
+            AltFire = false;
             Vertical = 0;
             Horizontal = 0;
         }

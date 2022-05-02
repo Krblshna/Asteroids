@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections;
-using Asteroids.Utils;
+using Asteroids.Utility;
 using UnityEngine;
 
 namespace Asteroids.Weapon
 {
+    
     public class Bullet : MonoBehaviour, IBullet
     {
+        [SerializeField]
         private float _speed;
+        private GroupType _groupType;
         private Rigidbody2D _body;
         private Action<IBullet> _onDestroyAction;
         private float _bodySize = 0.07f;
@@ -33,13 +36,15 @@ namespace Asteroids.Weapon
             var destructible = coll.GetComponent<IDestructible>();
             if (destructible != null)
             {
-                destructible.Hit();
+                var hit = destructible.Hit(_groupType);
+                if (!hit) return;
                 DoDestroy();
             }
         }
 
         private void DoDestroy()
         {
+            if (!gameObject.activeSelf) return;
             if (_destroyEn != null)
             {
                 StopCoroutine(_destroyEn);
@@ -48,8 +53,9 @@ namespace Asteroids.Weapon
             _onDestroyAction?.Invoke(this);
         }
 
-        public void Init(float speed, float lifeTime, Action<IBullet> onDestroyAction)
+        public void Init(GroupType groupType, float speed, float lifeTime, Action<IBullet> onDestroyAction)
         {
+            _groupType = groupType;
             _onDestroyAction = onDestroyAction;
             _speed = speed;
             _lifeTimeWait = new WaitForSeconds(lifeTime);

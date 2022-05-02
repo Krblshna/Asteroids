@@ -1,7 +1,9 @@
-﻿namespace Asteroids.Weapon
+﻿using Asteroids.Utility;
+
+namespace Asteroids.Weapon
 {
     public interface IDestructible
     {
-        void Hit();
+        bool Hit(GroupType hitGroup);
     }
 }

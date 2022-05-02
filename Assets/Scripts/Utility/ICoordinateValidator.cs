@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Asteroids.Utils
+namespace Asteroids.Utility
 {
     public interface ICoordinateValidator
     {

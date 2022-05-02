@@ -1,4 +1,5 @@
 ﻿using System;
+using Asteroids.Utility;
 using UnityEngine;
 
 namespace Asteroids.Weapon
@@ -6,7 +7,7 @@ namespace Asteroids.Weapon
     public interface IBullet
     {
         void SetActive(bool active);
-        void Init(float bulletSpeed, float lifeTime, Action<IBullet> onDestroyAction);
+        void Init(GroupType groupType, float speed, float lifeTime, Action<IBullet> onDestroyAction);
         void OnActivate(Vector2 initPos, Vector2 fireDirection);
     }
 }
