@@ -5,7 +5,7 @@ namespace Asteroids.Weapon
 {
     public class Damager : MonoBehaviour
     {
-        private GroupType _groupType;
+        [SerializeField] private GroupType _groupType;
         private void OnTriggerEnter2D(Collider2D coll)
         {
             var destructible = coll.GetComponent<IDestructible>();

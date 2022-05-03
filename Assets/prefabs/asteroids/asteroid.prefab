@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 1248166453057188576}
   - component: {fileID: 8999996505430212914}
   - component: {fileID: -3458962291857262252}
+  - component: {fileID: 8023377756955239636}
   m_Layer: 0
   m_Name: asteroid
   m_TagString: Untagged
@@ -138,6 +139,8 @@ MonoBehaviour:
   _maxStartForce: 40
   _minRotation: 15
   _maxRotation: 20
+  _statEvent: 0
+  _destroyEffect: 0
   _poolable: 0
 --- !u!50 &5260832567537192349
 Rigidbody2D:
@@ -224,3 +227,15 @@ MonoBehaviour:
   _creationRadius: 0.3
   _amountMin: 1
   _amountMax: 3
+--- !u!114 &8023377756955239636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5260832567537192350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf0c226d6911c94497d955d87b88def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

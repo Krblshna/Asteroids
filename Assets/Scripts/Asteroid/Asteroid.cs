@@ -1,5 +1,7 @@
 ﻿using System;
 using Asteroids.Effect;
+using Asteroids.GameManagement;
+using Asteroids.Statistics;
 using Asteroids.Utility;
 using Asteroids.Weapon;
 using UnityEngine;
@@ -14,6 +16,7 @@ namespace Asteroids.Asteroid
             _minRotation,
             _maxRotation;
 
+        [SerializeField] private StatEvent _statEvent;
         [SerializeField] private EffectType _destroyEffect;
         [SerializeField] private bool _poolable;
         private Rigidbody2D _body;
@@ -50,6 +53,8 @@ namespace Asteroids.Asteroid
             _destroyed = true;
             EffectsManager.Instance.CreateEffect(_destroyEffect, transform.position);
             _destroyAction?.Execute();
+            Stats.Instance.OnAction(_statEvent);
+            GameManager.Instance.UnregisterEnemy(gameObject);
             if (_poolable)
             {
                 _onDestroyAction?.Invoke(this);
@@ -79,6 +84,7 @@ namespace Asteroids.Asteroid
             var randomRotation = RandSign() * Random.Range(_minRotation, _maxRotation);
             _body.AddForce(randomForce);
             _body.AddTorque(randomRotation);
+            GameManager.Instance.RegisterEnemy(gameObject);
             _destroyed = false;
         }
     }

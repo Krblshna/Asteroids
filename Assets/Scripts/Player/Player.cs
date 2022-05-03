@@ -1,4 +1,6 @@
 ﻿using System;
+using Asteroids.Effect;
+using Asteroids.GameManagement;
 using Asteroids.Utility;
 using Asteroids.Weapon;
 using UnityEngine;
@@ -44,6 +46,8 @@ namespace Asteroids.Player
         {
             if (hitGroup == _groupType) return false;
             gameObject.SetActive(false);
+            EffectsManager.Instance.CreateEffect(EffectType.DeathBig, transform.position);
+            GameManager.Instance.Finish();
             return true;
         }
     }

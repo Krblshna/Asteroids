@@ -1,4 +1,5 @@
 ﻿using Asteroids.Effect;
+using Asteroids.Statistics;
 using Asteroids.Utility;
 using Asteroids.Weapon;
 using UnityEngine;
@@ -18,6 +19,11 @@ namespace Asteroids.UFO
             _weapon.Init(_groupType);
         }
 
+        void Start()
+        {
+            playerTransform = FindObjectOfType<Player.Player>().transform;
+        }
+
         void Update()
         {
             float step = speed * Time.deltaTime;
@@ -31,6 +37,7 @@ namespace Asteroids.UFO
         {
             if (_groupType == hitGroup) return false;
             EffectsManager.Instance.CreateEffect(EffectType.DeathMiddle, transform.position);
+            Stats.Instance.OnAction(StatEvent.DestroyUfo);
             Destroy(gameObject);
             return true;
         }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7910005337780104311}
   - component: {fileID: 7910005337780104310}
   - component: {fileID: 5774242211732850058}
+  - component: {fileID: 8060696776145532682}
   m_Layer: 0
   m_Name: asteroid fragment
   m_TagString: Untagged
@@ -51,6 +52,7 @@ MonoBehaviour:
   _maxStartForce: 60
   _minRotation: 10
   _maxRotation: 30
+  _statEvent: 1
   _destroyEffect: 1
   _poolable: 1
 --- !u!50 &7910005337780104310
@@ -90,6 +92,19 @@ CircleCollider2D:
   m_Offset: {x: -0.007955313, y: 0.003260702}
   serializedVersion: 2
   m_Radius: 0.23188058
+--- !u!114 &8060696776145532682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7910005337780104309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf0c226d6911c94497d955d87b88def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groupType: 0
 --- !u!1 &7910005338756690543
 GameObject:
   m_ObjectHideFlags: 0
