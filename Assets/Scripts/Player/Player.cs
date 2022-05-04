@@ -1,4 +1,5 @@
 ﻿using System;
+using Asteroids.Common;
 using Asteroids.Effect;
 using Asteroids.GameManagement;
 using Asteroids.Utility;
@@ -21,7 +22,7 @@ namespace Asteroids.Player
             var body = GetComponent<Rigidbody2D>();
             _input = GetComponent<IInput>();
             _movementController = GetComponent<IMovementController>();
-            _movementController.Init(_input, body);
+            _movementController.Init(_input, transform);
             _weaponController = GetComponentInChildren<WeaponController>();
             _weaponController.Init(_input, _groupType);
         }
@@ -34,12 +35,8 @@ namespace Asteroids.Player
         {
             _input.CustomUpdate();
             _weaponController.CustomUpdate();
-            transform.position = ScreenPortal.ValidatePos(transform.position, ship_size);
-        }
-
-        void FixedUpdate()
-        {
-            _movementController.CustomFixedUpdate();
+            _movementController.CustomUpdate();
+            transform.position = ScreenData.ValidatePos(transform.position, ship_size);
         }
 
         public bool Hit(GroupType hitGroup)
@@ -49,6 +46,11 @@ namespace Asteroids.Player
             EffectsManager.Instance.CreateEffect(EffectType.DeathBig, transform.position);
             GameManager.Instance.Finish();
             return true;
+        }
+
+        public void Hit()
+        {
+            throw new NotImplementedException();
         }
     }
 }

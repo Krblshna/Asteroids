@@ -44,7 +44,6 @@ namespace Asteroids.UI
             var velocity = _body.velocity;
             var angle = (int)Mathf.Abs(_body.rotation % 360);
             StringBuilder sb = new StringBuilder(100);
-            sb.Append($"Points: {Stats.Instance.StatAmount} \n");
             sb.Append($"Coordinate: ({pos.x:0.0}, {pos.y:0.0})\n");
             sb.Append($"Rotation angle: {angle}\n");
             sb.Append($"Velocity: ({velocity.x:0.0}, {velocity.y:0.0})\n");

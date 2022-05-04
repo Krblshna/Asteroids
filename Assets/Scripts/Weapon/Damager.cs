@@ -1,4 +1,5 @@
-﻿using Asteroids.Utility;
+﻿using Asteroids.Common;
+using Asteroids.HitDetectors;
 using UnityEngine;
 
 namespace Asteroids.Weapon
@@ -8,11 +9,8 @@ namespace Asteroids.Weapon
         [SerializeField] private GroupType _groupType;
         private void OnTriggerEnter2D(Collider2D coll)
         {
-            var destructible = coll.GetComponent<IDestructible>();
-            if (destructible != null)
-            {
-                var hit = destructible.Hit(_groupType);
-            }
+            var hitDetector = coll.GetComponent<IHitDetector>();
+            hitDetector?.Hit(_groupType);
         }
 
         public void Init(GroupType groupType)

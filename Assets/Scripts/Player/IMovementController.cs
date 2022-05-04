@@ -4,7 +4,7 @@ namespace Asteroids.Player
 {
     public interface IMovementController
     {
-        void Init(IInput input, Rigidbody2D body);
-        void CustomFixedUpdate();
+        void Init(IInput input, Transform transform);
+        void CustomUpdate();
     }
 }

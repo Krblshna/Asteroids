@@ -1,4 +1,4 @@
-﻿using Asteroids.Utility;
+﻿using Asteroids.Common;
 
 namespace Asteroids.Weapon
 {

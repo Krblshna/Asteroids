@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections;
+using Asteroids.Common;
+using Asteroids.HitDetectors;
+using Asteroids.Movers;
 using Asteroids.Utility;
 using UnityEngine;
 
@@ -11,7 +14,7 @@ namespace Asteroids.Weapon
         [SerializeField]
         private float _speed;
         private GroupType _groupType;
-        private Rigidbody2D _body;
+        private IMover _mover;
         private Action<IBullet> _onDestroyAction;
         private float _bodySize = 0.07f;
         private WaitForSeconds _lifeTimeWait;
@@ -19,7 +22,7 @@ namespace Asteroids.Weapon
 
         void Awake()
         {
-            _body = GetComponent<Rigidbody2D>();
+            _mover = GetComponent<IMover>();
         }
         public void SetActive(bool active)
         {
@@ -28,15 +31,15 @@ namespace Asteroids.Weapon
 
         public void Update()
         {
-            transform.position = ScreenPortal.ValidatePos(transform.position, _bodySize);
+            transform.position = ScreenData.ValidatePos(transform.position, _bodySize);
         }
 
         private void OnTriggerEnter2D(Collider2D coll)
         {
-            var destructible = coll.GetComponent<IDestructible>();
-            if (destructible != null)
+            var hitDetector = coll.GetComponent<IHitDetector>();
+            if (hitDetector != null)
             {
-                var hit = destructible.Hit(_groupType);
+                var hit = hitDetector.Hit(_groupType);
                 if (!hit) return;
                 DoDestroy();
             }
@@ -50,6 +53,8 @@ namespace Asteroids.Weapon
                 StopCoroutine(_destroyEn);
                 _destroyEn = null;
             }
+
+            _mover.DoOnDestroy();
             _onDestroyAction?.Invoke(this);
         }
 
@@ -64,8 +69,7 @@ namespace Asteroids.Weapon
         public void OnActivate(Vector2 initPos, Vector2 direction)
         {
             transform.position = initPos;
-            _body.velocity = Vector2.zero;
-            _body.AddForce(direction * _speed, ForceMode2D.Impulse);
+            _mover.Move(direction, _speed);
             _destroyEn = DestroyInTime();
             StartCoroutine(_destroyEn);
         }

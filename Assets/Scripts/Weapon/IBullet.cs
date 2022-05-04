@@ -1,5 +1,5 @@
 ﻿using System;
-using Asteroids.Utility;
+using Asteroids.Common;
 using UnityEngine;
 
 namespace Asteroids.Weapon
