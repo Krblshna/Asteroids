@@ -274,12 +274,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5260832567537192350}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b28e959caf16a4d8e5db2d5da18c88, type: 3}
+  m_Script: {fileID: 11500000, guid: 3339e103082fca14ab5de13299217ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minStartForce: 0.5
-  _maxStartForce: 0.8
-  _minRotation: 15
+  _minStartVelocity: 0.5
+  _maxStartVelocity: 1
+  _minRotation: 20
   _maxRotation: 30
 --- !u!114 &2251043499112003135
 MonoBehaviour:
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5260832567537192350}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a62b2936c8b02c43a885153a9a04fe2, type: 3}
+  m_Script: {fileID: 11500000, guid: 5440534df5791394d8b64336a6c57f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5794796923907804836

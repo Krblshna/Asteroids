@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 3627817396333067035}
   - component: {fileID: 5203820248263111836}
   m_Layer: 0
-  m_Name: ufo
+  m_Name: deleteme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

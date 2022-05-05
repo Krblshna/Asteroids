@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Asteroids.Enemies
 {
-    public class Asteroid : MonoBehaviour, IEnemy
+    public class Enemy : MonoBehaviour, IEnemy
     {
         private bool _destroyed;
         private GroupType _groupType = GroupType.Enemy;

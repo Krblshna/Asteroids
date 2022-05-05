@@ -499,8 +499,8 @@ MonoBehaviour:
     _minSpawnDelay: 5
     _maxSpawnDelay: 10
   - _enemyType: 2
-    _minSpawnDelay: 10
-    _maxSpawnDelay: 15
+    _minSpawnDelay: 1
+    _maxSpawnDelay: 1
 --- !u!1 &847056242
 GameObject:
   m_ObjectHideFlags: 0
