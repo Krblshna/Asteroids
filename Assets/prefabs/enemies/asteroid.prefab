@@ -278,8 +278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minStartVelocity: 0.5
-  _maxStartVelocity: 1
-  _minRotation: 20
+  _maxStartVelocity: 0.8
+  _minRotation: 15
   _maxRotation: 30
 --- !u!114 &2251043499112003135
 MonoBehaviour:
