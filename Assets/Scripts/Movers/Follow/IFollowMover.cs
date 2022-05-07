@@ -4,6 +4,7 @@ namespace Asteroids.Movers
 {
     public interface IFollowMover
     {
-        void StartFollow(Transform targetTransform, float velocity);
+        void StartFollow(float velocity);
+        void Update();
     }
 }

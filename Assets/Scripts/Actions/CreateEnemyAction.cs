@@ -1,14 +1,25 @@
-﻿using Asteroids.Common;
+﻿using System;
+using Asteroids.Common;
 using Asteroids.Enemies;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Asteroids.Actions
 {
-    public class CreateEnemyAction : MonoBehaviour, IAction
+    public class CreateEnemyAction : IAction
     {
         [SerializeField] private EnemyType _enemyType;
         [SerializeField] private float _creationRadius;
         [SerializeField] private int _amountMin, _amountMax;
+        private readonly Transform _transform;
+        private readonly IEnemyFactoryProvider _enemyFactoryProvider;
+
+        public CreateEnemyAction(IEnemyFactoryProvider enemyFactoryProvider, Transform transform, EnemyType enemyType)
+        {
+            _enemyFactoryProvider = enemyFactoryProvider;
+            _transform = transform;
+            _enemyType = enemyType;
+        }
 
         public void Call()
         {
@@ -17,8 +28,8 @@ namespace Asteroids.Actions
             {
                 var randX = RandVal();
                 var randY = RandVal();
-                var creationPos = (Vector2)transform.position + new Vector2(randX, randY);
-                EnemiesManager.Instance.CreateEnemy(_enemyType, creationPos);
+                var creationPos = (Vector2)_transform.position + new Vector2(randX, randY);
+                _enemyFactoryProvider.Create(_enemyType, creationPos);
             }
         }
 

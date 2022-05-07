@@ -2,6 +2,6 @@
 {
     public interface IEnemyPool
     {
-        IEnemy Get();
+        IEnemyView Get();
     }
 }

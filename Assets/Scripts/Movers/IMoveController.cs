@@ -4,5 +4,6 @@
     {
         void Move();
         void DoOnDestroy();
+        void Update();
     }
 }

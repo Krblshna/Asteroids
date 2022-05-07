@@ -1,19 +1,28 @@
-﻿using UnityEngine;
+﻿using Asteroids.Common;
+using Asteroids.PositionValidators;
+using UnityEngine;
 
 namespace Asteroids.Movers
 {
-    public class FollowMover : MonoBehaviour, IFollowMover
+    public class FollowMover : IFollowMover
     {
-        private Transform _followTransform;
+        private readonly IBorderValidator _borderValidator;
+        private readonly Transform _transform;
+        private readonly IFollowable _followable;
+
         private float _velocity;
         private Vector2 _lastMoveDirection;
 
-        private bool CouldFollow => _followTransform.gameObject.activeSelf;
-
-        void Update()
+        public FollowMover(Transform transform, IFollowable followable, IBorderValidator borderValidator)
         {
-            if (_followTransform == null) return;
-            if (CouldFollow)
+            _transform = transform;
+            _followable = followable;
+            _borderValidator = borderValidator;
+        }
+
+        public void Update()
+        {
+            if (_followable.Active)
             {
                 FollowMove();
             }
@@ -25,19 +34,21 @@ namespace Asteroids.Movers
 
         private void FollowMove()
         {
-            transform.position =
-                Vector2.MoveTowards(transform.position, _followTransform.position, _velocity * Time.deltaTime);
-            _lastMoveDirection = _followTransform.position - transform.position;
+            var nextPos =
+                Vector2.MoveTowards(_transform.position, _followable.GetPos(), _velocity * Time.deltaTime);
+            var validPos = _borderValidator.Validate(nextPos);
+            _transform.position = validPos;
+            _lastMoveDirection = _followable.GetPos() - validPos;
         }
 
         private void MoveLastDirection()
         {
-            transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + _lastMoveDirection, _velocity * Time.deltaTime);
+            var pos = Vector2.MoveTowards(_transform.position, (Vector2)_transform.position + _lastMoveDirection, _velocity * Time.deltaTime);
+            _transform.position = _borderValidator.Validate(pos);
         }
 
-        public void StartFollow(Transform followTransform, float velocity)
+        public void StartFollow(float velocity)
         {
-            _followTransform = followTransform;
             _velocity = velocity;
         }
     }

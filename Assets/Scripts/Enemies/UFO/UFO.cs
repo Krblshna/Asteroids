@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Asteroids.Enemies
 {
-    public class UFO : MonoBehaviour, IEnemy, IDestructible
+    public class UFO3214 : MonoBehaviour, IEnemyView, IDestructible
     {
         [SerializeField] private Transform playerTransform;
         [SerializeField] private float speed = 5f;
@@ -15,7 +15,7 @@ namespace Asteroids.Enemies
         private float spawnTime;
         private GroupType _groupType = GroupType.Enemy;
         private IWeapon _weapon;
-        private Action<IEnemy> _onDestroyAction;
+        private Action<IEnemyView> _onDestroyAction;
         private Vector2 lastMoveDirection;
         private bool _destroyed;
 
@@ -49,8 +49,8 @@ namespace Asteroids.Enemies
         {
             if (_groupType == hitGroup || _destroyed) return false;
             _destroyed = true;
-            EffectsManager.Instance.CreateEffect(EffectType.DeathMiddle, transform.position);
-            GamePoints.TriggerStatEvent(StatType.DestroyUfo);
+            //EffectsManager.Instance.Create(EffectType.DeathMiddle, transform.position);
+            //GamePoints.TriggerStatEvent(StatType.DestroyUfo);
             _onDestroyAction?.Invoke(this);
             return true;
         }
@@ -60,7 +60,7 @@ namespace Asteroids.Enemies
             gameObject.SetActive(active);
         }
 
-        public void Init(Action<IEnemy> destroyCallback)
+        public void Init(Action<IEnemyView> destroyCallback)
         {
             _onDestroyAction = destroyCallback;
         }

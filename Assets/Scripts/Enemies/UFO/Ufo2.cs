@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace Asteroids.Enemies
 {
-    public class Ufo2 : MonoBehaviour, IEnemy
+    public class Ufo2123 : MonoBehaviour, IEnemyView
     {
         private bool _destroyed;
         private GroupType _groupType = GroupType.Enemy;
-        private Action<IEnemy> _destroyCallback;
+        private Action<IEnemyView> _destroyCallback;
         private IMoveController _moveController;
         private IAction[] _onDestroyActions;
         private IHitDetector _hitDetector;
@@ -34,7 +34,7 @@ namespace Asteroids.Enemies
             transform.position = pos;
         }
 
-        public void Init(Action<IEnemy> destroyCallback)
+        public void Init(Action<IEnemyView> destroyCallback)
         {
             _destroyCallback = destroyCallback;
         }

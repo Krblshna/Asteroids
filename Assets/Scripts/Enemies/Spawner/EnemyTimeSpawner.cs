@@ -5,11 +5,15 @@ using UnityEngine;
 
 namespace Asteroids.Enemies
 {
-    public class EnemySpawner : MonoBehaviour
+    public class EnemyTimeSpawner : MonoBehaviour
     {
         [SerializeField] private SpawnParams[] spawnParams;
-        private bool _active;
+        private IEnemyCreator _enemyCreator;
 
+        void Awake()
+        {
+            _enemyCreator = GetComponent<IEnemyCreator>();
+        }
 
         void Start()
         {
@@ -27,9 +31,10 @@ namespace Asteroids.Enemies
             }
         }
 
+        //FIXME
         private void Spawn(EnemyType enemyType)
         {
-            EnemiesManager.Instance.CreateEnemy(enemyType, GameManager.Instance.GetPosFromPlayer());
+            _enemyCreator.Create(enemyType, GameManager.Instance.GetPosFromPlayer());
         }
     }
 }

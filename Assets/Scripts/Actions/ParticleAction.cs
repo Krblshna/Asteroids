@@ -3,14 +3,22 @@ using UnityEngine;
 
 namespace Asteroids.Actions
 {
-    public class ParticleAction : MonoBehaviour, IAction
+    public class ParticleAction : IAction
     {
-        [SerializeField] private EffectType _destroyEffect;
+        private readonly EffectType _destroyEffect;
+        private readonly IEffectsProvider _effectsProvider;
+        private readonly Transform _transform;
+
+        public ParticleAction(IEffectsProvider effectsProvider, Transform transform, EffectType destroyEffect)
+        {
+            _effectsProvider = effectsProvider;
+            _transform = transform;
+            _destroyEffect = destroyEffect;
+        }
 
         public void Call()
         {
-            Debug.Log("Call particle");
-            EffectsManager.Instance.CreateEffect(_destroyEffect, transform.position);
+            _effectsProvider.Create(_destroyEffect, _transform.position);
         }
     }
 }

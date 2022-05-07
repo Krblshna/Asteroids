@@ -3,20 +3,28 @@ using UnityEngine;
 
 namespace Asteroids.Movers
 {
-    public class FollowMoveController : MonoBehaviour, IMoveController
+    public class FollowMoveController : IMoveController
     {
-        [SerializeField] private float _velocity;
-        private IFollowMover _mover;
+        private readonly float _velocity;
+        private readonly IFollowMover _mover;
 
+        public FollowMoveController(IFollowMover mover, float velocity)
+        {
+            _mover = mover;
+            _velocity = velocity;
+        }
         public void Move()
         {
-            _mover = GetComponent<IFollowMover>();
-            var player = GameManager.Instance.Player;
-            _mover.StartFollow(player.transform, _velocity);
+            _mover.StartFollow(_velocity);
         }
 
         public void DoOnDestroy()
         {
+        }
+
+        public void Update()
+        {
+            _mover.Update();
         }
     }
 }

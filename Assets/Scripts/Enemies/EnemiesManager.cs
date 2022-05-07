@@ -6,14 +6,16 @@ using UnityEngine;
 
 namespace Asteroids.Enemies
 {
-    public class EnemiesManager : Singleton<EnemiesManager>
+    public class EnemiesManager : MonoBehaviour, IEnemyCreator
     {
         [SerializeField] private EnemyPool[] _pools;
-        private Dictionary<EnemyType, IEnemyPool> _poolsDict;
+        private Dictionary<EnemyType, IEnemyPool> _poolsDict = new Dictionary<EnemyType, IEnemyPool>();
+        private IEnemyFactoryProvider _enemyFactoryProvider;
 
-        public override void Awake()
+        public void Awake()
         {
-            base.Awake();
+            _enemyFactoryProvider = GameLogic.GameLogic.EnemyFactoryProvider;
+            _enemyFactoryProvider.Init(Create);
             foreach (var effectPool in _pools)
             {
                 effectPool.Init();
@@ -21,7 +23,7 @@ namespace Asteroids.Enemies
             _poolsDict = _pools.ToDictionary(pool => pool.Type, pool => (IEnemyPool)pool);
         }
 
-        public void CreateEnemy(EnemyType enemyType, Vector2 pos)
+        public void Create(EnemyType enemyType, Vector2 pos)
         {
             if (_poolsDict.TryGetValue(enemyType, out var enemyPool))
             {

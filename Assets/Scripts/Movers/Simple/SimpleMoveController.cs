@@ -2,14 +2,28 @@
 
 namespace Asteroids.Movers
 {
-    public class SimpleMoveController : MonoBehaviour, IMoveController
+    public class SimpleMoveController : IMoveController
     {
-        [SerializeField]
-        private float _minStartVelocity,
-            _maxStartVelocity,
-            _minRotation,
-            _maxRotation;
-        private IMover _mover;
+        private readonly SimpleMoveData _moveData;
+        private readonly IMover _mover;
+        private readonly IRotator _rotator;
+
+        private bool _active;
+
+        public SimpleMoveController(IMover mover, IRotator rotator, SimpleMoveData moveData)
+        {
+            _mover = mover;
+            _rotator = rotator;
+            _moveData = moveData;
+        }
+
+        public void Update()
+        {
+            if (!_active) return;
+            _mover.Update();
+            _rotator.Update();
+        }
+
         int RandSign()
         {
             return (int)Mathf.Sign(Random.Range(-1, 1));
@@ -17,16 +31,23 @@ namespace Asteroids.Movers
 
         public void Move()
         {
-            _mover = GetComponent<IMover>();
-            var randomForce = new Vector2(RandSign() * Random.Range(_minStartVelocity, _maxStartVelocity), RandSign() * Random.Range(_minStartVelocity, _maxStartVelocity));
-            var randomRotation = RandSign() * Random.Range(_minRotation, _maxRotation);
-            _mover.Move(randomForce.normalized, randomForce.sqrMagnitude);
-            _mover.Rotate(randomRotation);
+            _active = true;
+            var randomVelocityVector = new Vector2(RandVelocity(), RandVelocity());
+            var randomRotation = RandSign() * Random.Range(_moveData.MinRotation, _moveData.MaxRotation);
+            _mover.Move(randomVelocityVector.normalized, randomVelocityVector.sqrMagnitude);
+            _rotator.Rotate(randomRotation);
+        }
+
+        private float RandVelocity()
+        {
+            return RandSign() * Random.Range(_moveData.MinStartVelocity, _moveData.MaxStartVelocity);
         }
 
         public void DoOnDestroy()
         {
             _mover.DoOnDestroy();
+            _rotator.DoOnDestroy();
+            _active = false;
         }
     }
 }

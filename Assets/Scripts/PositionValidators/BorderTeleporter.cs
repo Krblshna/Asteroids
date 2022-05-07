@@ -3,25 +3,23 @@ using UnityEngine;
 
 namespace Asteroids.PositionValidators
 {
-    public class BorderTeleporter : MonoBehaviour
+    public class BorderValidator : IBorderValidator
     {
-        [SerializeField] private float _bodySize = 1f;
+        private readonly float _bodySize;
 
-        public void Update()
+        public BorderValidator(float bodySize)
         {
-            transform.position = ValidatePos();
+            _bodySize = bodySize;
         }
-
-        static float ValidateCoordinate(float coordinateValue, float min, float max)
+        private float ValidateCoordinate(float coordinateValue, float min, float max)
         {
             coordinateValue = coordinateValue > max ? min : coordinateValue;
             coordinateValue = coordinateValue < min ? max : coordinateValue;
             return coordinateValue;
         }
 
-        public Vector3 ValidatePos()
+        public Vector3 Validate(Vector3 pos)
         {
-            var pos = transform.position;
             var posX = ValidateCoordinate(pos.x, ScreenData.MinX - _bodySize / 2, ScreenData.MaxX + _bodySize / 2);
             var posY = ValidateCoordinate(pos.y, ScreenData.MinY - _bodySize / 2, ScreenData.MaxY + _bodySize / 2);
             return new Vector3(posX, posY, pos.z);

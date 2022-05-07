@@ -4,13 +4,20 @@ using UnityEngine;
 
 namespace Asteroids.Actions
 {
-    public class StatAction : MonoBehaviour, IAction
+    public class StatAction : IAction
     {
-        [SerializeField] private StatType _statEvent;
+        private readonly StatType _statEvent;
+        private readonly IPlayerStat _playerStat;
+
+        public StatAction(IPlayerStat playerStat, StatType statEvent)
+        {
+            _playerStat = playerStat;
+            _statEvent = statEvent;
+        }
 
         public void Call()
         {
-            GamePoints.TriggerStatEvent(_statEvent);
+            _playerStat.TriggerStatEvent(_statEvent);
         }
     }
 }

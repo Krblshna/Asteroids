@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Asteroids.Enemies
 {
-    public interface IEnemy
+    public interface IEnemyView
     {
         void SetActive(bool active);
-        void Init(Action<IEnemy> destroyCallback);
+        void Init(Action<IEnemyView> destroyCallback);
         void OnCreate();
         void SetPos(Vector2 pos);
     }

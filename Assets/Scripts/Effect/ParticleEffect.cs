@@ -18,7 +18,6 @@ namespace Asteroids.Effect
             _onDestroyAction?.Invoke(this);
         }
 
-
         private void Awake()
         {
             _particleSystem = GetComponent<ParticleSystem>();

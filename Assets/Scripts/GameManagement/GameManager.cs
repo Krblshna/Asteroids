@@ -17,11 +17,10 @@ namespace Asteroids.GameManagement
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private GameObject _gameoverPanel;
         [SerializeField] private TextMeshProUGUI _textMesh;
-        private int _minAsteroids = 3, _maxAsteroids = 5;
-        private int _maxRandTries = 30;
+        
         private List<Vector2> usedPoses = new List<Vector2>();
-        private HashSet<int> enemies = new HashSet<int>();
         private bool _restart;
+        private int _maxRandTries = 30;
         public GameObject Player { get; private set; }
 
         private void Start()
@@ -29,29 +28,9 @@ namespace Asteroids.GameManagement
             StartNewGame();
         }
 
-        public void RegisterEnemy(GameObject enemyObj)
-        {
-            //enemies.Add(enemyObj.GetInstanceID());
-        }
-
-        public void UnregisterEnemy(GameObject enemyObj)
-        {
-            //enemies.Remove(enemyObj.GetInstanceID());
-            //if (enemies.Count < 1 && !_restart)
-            //{
-            //    _restart = true;
-            //    Utils.Instance.setTimeOut(RestartGame, 1f);
-            //}
-        }
-
         private void StartNewGame()
         {
             SpawnPlayer();
-            var asteroidsAmount = Random.Range(_minAsteroids, _maxAsteroids + 1);
-            for (var i = 0; i < asteroidsAmount; i++)
-            {
-                EnemiesManager.Instance.CreateEnemy(EnemyType.asteroid, GetRandPos());
-            }
         }
 
         private void SpawnPlayer()
@@ -95,16 +74,15 @@ namespace Asteroids.GameManagement
 
         private void RestartGame()
         {
-            enemies.Clear();
             _restart = false;
-            GamePoints.Clear();
+            //GamePoints.Clear();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
         }
 
         public void Finish()
         {
             _gameoverPanel.SetActive(true);
-            _textMesh.text = $"Your Points: {GamePoints.StatAmount}";
+            //_textMesh.text = $"Your Points: {GamePoints.StatAmount}";
             Utils.Instance.setTimeOut(RestartGame, 3f);
         }
     }
