@@ -974,6 +974,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1731936133}
   - component: {fileID: 1731936134}
+  - component: {fileID: 1731936136}
   - component: {fileID: 1731936135}
   m_Layer: 0
   m_Name: EnemiesManager
@@ -1033,9 +1034,22 @@ MonoBehaviour:
     _minSpawnDelay: 5
     _maxSpawnDelay: 10
   - _enemyType: 2
-    _minSpawnDelay: 1
-    _maxSpawnDelay: 1
-  _enemiesManagerObj: {fileID: 1731936131}
+    _minSpawnDelay: 10
+    _maxSpawnDelay: 15
+--- !u!114 &1731936136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731936131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dacaea98a8d4d747ae7f6d2af1c669d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minAsteroids: 3
+  _maxAsteroids: 5
 --- !u!1 &2050352080
 GameObject:
   m_ObjectHideFlags: 0

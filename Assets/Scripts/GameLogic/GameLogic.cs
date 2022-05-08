@@ -27,7 +27,7 @@ namespace Asteroids.GameLogic
             AsteroidFactory = new AsteroidFactory(EffectsProvider, EnemyFactoryProvider, PlayerStat, asteroidMoveData, 1f);
 
             var shardMoveData = new SimpleMoveData(1.1f, 1.4f, 30f, 50f);
-            ShardsFactory = new AsteroidFactory(EffectsProvider, EnemyFactoryProvider, PlayerStat, shardMoveData, 0.5f);
+            ShardsFactory = new ShardsFactory(EffectsProvider,  PlayerStat, shardMoveData, 0.5f);
         }
     }
 }

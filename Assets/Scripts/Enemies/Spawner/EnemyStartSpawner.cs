@@ -6,6 +6,7 @@ namespace Asteroids.Enemies
 {
     public class EnemyStartSpawner : MonoBehaviour
     {
+        [SerializeField]
         private int _minAsteroids = 3, _maxAsteroids = 5;
         private IEnemyCreator _enemyCreator;
 

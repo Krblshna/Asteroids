@@ -3,6 +3,7 @@ using System.Collections;
 using Asteroids.Common;
 using Asteroids.HitDetectors;
 using Asteroids.Movers;
+using Asteroids.PositionValidators;
 using Asteroids.Utility;
 using UnityEngine;
 
@@ -11,7 +12,6 @@ namespace Asteroids.Weapon
     
     public class Bullet : MonoBehaviour, IBullet
     {
-        [SerializeField]
         private float _speed;
         private GroupType _groupType;
         private IMover _mover;
@@ -22,7 +22,7 @@ namespace Asteroids.Weapon
 
         void Awake()
         {
-            _mover = GetComponent<IMover>();
+            _mover = new SimpleMover(transform, new BorderValidator(_bodySize));
         }
         public void SetActive(bool active)
         {
@@ -31,7 +31,7 @@ namespace Asteroids.Weapon
 
         public void Update()
         {
-            transform.position = ScreenData.ValidatePos(transform.position, _bodySize);
+            _mover.Update();
         }
 
         private void OnTriggerEnter2D(Collider2D coll)

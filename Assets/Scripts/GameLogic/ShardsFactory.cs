@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Asteroids.GameLogic
 {
-    public class AsteroidFactory : IEnemyFactory<IEnemy>
+    public class ShardsFactory : IEnemyFactory<IEnemy>
     {
         private readonly IEffectsProvider _effectsProvider;
         private readonly IEnemyFactoryProvider _enemyFactoryProvider;
@@ -17,16 +17,14 @@ namespace Asteroids.GameLogic
         private readonly SimpleMoveData _moveData;
         private readonly float _bodySize;
 
-        public AsteroidFactory(
+        public ShardsFactory(
             IEffectsProvider effectsProvider, 
-            IEnemyFactoryProvider enemyFactoryProvider, 
             IPlayerStat playerStat, 
             SimpleMoveData moveData,
             float bodySize
             )
         {
             _effectsProvider = effectsProvider;
-            _enemyFactoryProvider = enemyFactoryProvider;
             _playerStat = playerStat;
             _moveData = moveData;
             _bodySize = bodySize;
@@ -41,7 +39,6 @@ namespace Asteroids.GameLogic
             var creationData = new EnemiesCreationData(EnemyType.asteroidShard, 0.5f, 1, 3);
             var destroyActions = new IAction[]
             {
-                new CreateEnemyAction(_enemyFactoryProvider, transform, creationData),
                 new ParticleAction(_effectsProvider, transform,  EffectType.DeathBig),
                 new StatAction(_playerStat, StatType.DestroyAsteroid)
             };

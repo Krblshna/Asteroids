@@ -22,6 +22,11 @@ namespace Asteroids.Enemies
             _hitDetector.Init(_enemyModel.GroupType, Hit);
         }
 
+        public void Update()
+        {
+            _enemyModel.Update();
+        }
+
         public void SetActive(bool active)
         {
             gameObject.SetActive(active);

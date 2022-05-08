@@ -10,9 +10,12 @@ namespace Asteroids.Effect
     {
         [SerializeField] private EffectPool[] _effects;
         private Dictionary<EffectType, EffectPool> _effectsPools;
+        private IEffectsProvider _effectProvider;
 
         public void Awake()
         {
+            _effectProvider = GameLogic.GameLogic.EffectsProvider;
+            _effectProvider.Init(Create);
             foreach (var effectPool in _effects)
             {
                 effectPool.Init();
