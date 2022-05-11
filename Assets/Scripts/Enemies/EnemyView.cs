@@ -1,5 +1,6 @@
 ﻿using System;
 using Asteroids.Actions;
+using Asteroids.Common;
 using Asteroids.Enemies.EnemyProviders;
 using Asteroids.GameLogic;
 using Asteroids.HitDetectors;
@@ -14,10 +15,15 @@ namespace Asteroids.Enemies
         private Action<IEnemyView> _destroyCallback;
         private IHitDetector _hitDetector;
         private IEnemy _enemyModel;
+        private ICouldSplit _splitable;
 
         public virtual void Awake()
         {
             _enemyModel = GetComponent<IEnemyProvider>().GetModel();
+            if (_enemyModel is ICouldSplit split)
+            {
+                _splitable = split;
+            }
             _hitDetector = GetComponentInChildren<IHitDetector>();
             _hitDetector.Init(_enemyModel.GroupType, Hit);
         }
@@ -48,16 +54,20 @@ namespace Asteroids.Enemies
             _enemyModel.OnCreate();
         }
 
-        public void Hit()
+        public void Hit(DamageType damageType)
         {
             if (_destroyed) return;
-            Death();
+            Death(damageType);
         }
 
-        private void Death()
+        private void Death(DamageType damageType)
         {
             _destroyed = true;
             _enemyModel.OnDestroy();
+            if (damageType != DamageType.Destroy)
+            {
+                _splitable?.OnSplit();
+            }
             _destroyCallback?.Invoke(this);
         }
     }

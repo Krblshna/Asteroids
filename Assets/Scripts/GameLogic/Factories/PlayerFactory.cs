@@ -35,7 +35,7 @@ namespace Asteroids.GameLogic
             var input = new PlayerInput();
             var laserData = new LaserData(3, 5f, 0.6f, 0.1f);
             var laserModel = new LaserModel(transform, FireType.AltFire, _groupType, laserData);
-            var gunModel = new GunModel(FireType.MainFire, _groupType, 0.1f);
+            var gunModel = new GunModel(FireType.MainFire, _groupType, 0.15f);
             var weapons = new IWeapon[]
             {
                 gunModel, laserModel

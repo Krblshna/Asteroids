@@ -41,11 +41,14 @@ namespace Asteroids.GameLogic
             var creationData = new EnemiesCreationData(EnemyType.asteroidShard, 0.2f, 1, 3);
             var destroyActions = new IAction[]
             {
-                new CreateEnemyAction(_enemyFactoryProvider, transform, creationData),
                 new ParticleAction(_effectsProvider, transform,  EffectType.DeathBig),
                 new StatAction(_gamePoints, StatType.DestroyAsteroid)
             };
-            return new Asteroid(moveController, destroyActions);
+            var splitActions = new IAction[]
+            {
+                new CreateEnemyAction(_enemyFactoryProvider, transform, creationData),
+            };
+            return new Asteroid(moveController, destroyActions, splitActions);
         }
     }
 }

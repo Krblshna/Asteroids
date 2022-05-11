@@ -8,13 +8,14 @@ namespace Asteroids.Weapon
     public class Damager : MonoBehaviour
     {
         [SerializeField] private GroupType _groupType;
+        [SerializeField] private DamageType _damageType = DamageType.Common;
         private Action _onHit;
 
         private void OnTriggerEnter2D(Collider2D coll)
         {
             var hitDetector = coll.GetComponent<IHitDetector>();
             if (hitDetector == null) return;
-            if (hitDetector.Hit(_groupType))
+            if (hitDetector.Hit(_groupType, _damageType))
             {
                 _onHit?.Invoke();
             }

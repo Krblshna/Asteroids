@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _groupType: 0
+  _damageType: 1
 --- !u!120 &19522056942197545
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -302,11 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa6f567a275142448bf87f0825cf0a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentRecoveryTime: 0
-  _maxAmmo: 3
-  _ammoRecoveryTime: 5
-  _fireDelay: 0.6
-  _laserLifeTime: 0.1
 --- !u!114 &19522057952269923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,8 +361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82eea22e30205143808edf972efc3dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainWeaponObj: {fileID: 19522058287162001}
-  altWeaponObj: {fileID: 19522057952269920}
 --- !u!1 &19522058287162001
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,4 +520,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7517ffa8485bdea4eb7e8f14769c31e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _log: 1

@@ -19,7 +19,7 @@ namespace Asteroids.UI
 
         private void Start()
         {
-            _playerStat = GameLogic.GameLogic.PlayerStat;
+            _playerStat = GameLogic.Logic.PlayerStat;
             _updateDelta = 1.0f / maxUpdateTimesPerSecond;
             _textMesh = GetComponent<TextMeshProUGUI>();
         }

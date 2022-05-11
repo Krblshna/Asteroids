@@ -23,7 +23,7 @@ namespace Asteroids.Player
         public void Init(Action onDestroy)
         {
             _onDestroy = onDestroy;
-            Player = GameLogic.GameLogic.PlayerFactory.Create(transform);
+            Player = GameLogic.Logic.PlayerFactory.Create(transform);
             _hitDetector = GetComponentInChildren<IHitDetector>();
             _hitDetector.Init(Player.GroupType, Hit);
             var weaponControllerView = GetComponentInChildren<WeaponControllerView>();
@@ -35,7 +35,7 @@ namespace Asteroids.Player
             Player.Update();
         }
 
-        public void Hit()
+        public void Hit(DamageType damageType)
         {
             gameObject.SetActive(false);
             Player.OnDestroy();

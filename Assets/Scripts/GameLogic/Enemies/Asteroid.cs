@@ -7,16 +7,22 @@ using Asteroids.Test2;
 
 namespace Asteroids.GameLogic
 {
-    public class Asteroid : IEnemy
+    public interface ICouldSplit
+    {
+        void OnSplit();
+    }
+    public class Asteroid : IEnemy, ICouldSplit
     {
         private readonly IMoveController _moveController;
         private readonly IAction[] _destroyActions;
+        private readonly IAction[] _splitActions;
         public GroupType GroupType { get; } = GroupType.Enemy;
 
-        public Asteroid(IMoveController moveController, IAction[] destroyActions)
+        public Asteroid(IMoveController moveController, IAction[] destroyActions, IAction[] splitActions = null)
         {
             _moveController = moveController;
             _destroyActions = destroyActions;
+            _splitActions = splitActions;
         }
 
         public void Update()
@@ -27,6 +33,15 @@ namespace Asteroids.GameLogic
         public void OnCreate()
         {
             _moveController.Move();
+        }
+
+        public void OnSplit()
+        {
+            if (_splitActions == null) return;
+            foreach (var damageEvent in _splitActions)
+            {
+                damageEvent.Call();
+            }
         }
 
         public void OnDestroy()

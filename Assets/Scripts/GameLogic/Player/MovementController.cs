@@ -10,10 +10,13 @@ namespace Asteroids.Player
         private readonly Transform _transform;
 
         private float _moveSpeed = 3;
-        private float _rotationSpeed = 120f;
+        private float _rotationSpeed = 240f;
         private float _maxSpeed = 5f;
-        private float _maxAngularVelocity = 120f;
-        
+        private float _maxAngularVelocity = 240f;
+        private float _moveBrakingVelocity = 0.5f;
+        private float _rotateBrakingVelocity = 100f;
+        private int _lastSign;
+
         private Vector2 _velocityVector;
         private float _angularVelocity;
         public Vector3 Position => _transform.position;
@@ -35,13 +38,17 @@ namespace Asteroids.Player
             _rotator.Update(_angularVelocity);
         }
 
-        public void UpdateControls()
+        private void UpdateControls()
         {
             if (_input.Up)
             {
                 var accelerationVector = _transform.rotation * Vector2.up * _moveSpeed * Time.deltaTime;
                 _velocityVector += (Vector2)accelerationVector;
                 _velocityVector = Vector2.ClampMagnitude(_velocityVector, _maxSpeed);
+            }
+            else if (_velocityVector.sqrMagnitude > 0.1f)
+            {
+                _velocityVector -= _velocityVector.normalized * _velocityVector.magnitude * _moveBrakingVelocity * Time.deltaTime;
             }
 
             if (_input.Right || _input.Left)
@@ -50,6 +57,11 @@ namespace Asteroids.Player
                 var angularAcceleration = sign * _rotationSpeed * Time.deltaTime;
                 _angularVelocity += angularAcceleration;
                 _angularVelocity = Mathf.Clamp(_angularVelocity, -_maxAngularVelocity, _maxAngularVelocity);
+                _lastSign = sign;
+            }
+            else if (Mathf.Abs(_angularVelocity) > 0.1f)
+            {
+                _angularVelocity -= Mathf.Sign(_angularVelocity) * _rotateBrakingVelocity * Time.deltaTime;
             }
         }
     }

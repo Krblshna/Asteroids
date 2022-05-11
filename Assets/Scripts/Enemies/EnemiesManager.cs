@@ -14,7 +14,7 @@ namespace Asteroids.Enemies
 
         public void Awake()
         {
-            _enemyFactoryProvider = GameLogic.GameLogic.EnemyFactoryProvider;
+            _enemyFactoryProvider = GameLogic.Logic.EnemyFactoryProvider;
             _enemyFactoryProvider.Init(Create);
             foreach (var effectPool in _pools)
             {

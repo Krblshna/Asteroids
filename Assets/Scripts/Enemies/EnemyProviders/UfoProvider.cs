@@ -7,7 +7,7 @@ namespace Asteroids.Enemies.EnemyProviders
     {
         public IEnemy GetModel()
         {
-            return GameLogic.GameLogic.UfoFactory.Create(transform);
+            return GameLogic.Logic.UfoFactory.Create(transform);
         }
     }
 }

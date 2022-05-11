@@ -14,7 +14,7 @@ namespace Asteroids.Effect
 
         public void Awake()
         {
-            _effectProvider = GameLogic.GameLogic.EffectsProvider;
+            _effectProvider = GameLogic.Logic.EffectsProvider;
             _effectProvider.Init(Create);
             foreach (var effectPool in _effects)
             {

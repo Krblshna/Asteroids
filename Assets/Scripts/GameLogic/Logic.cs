@@ -6,7 +6,7 @@ using Asteroids.Statistics;
 
 namespace Asteroids.GameLogic
 {
-    public static class GameLogic
+    public static class Logic
     {
         public static IFactory<IEnemy> AsteroidFactory { get; }
         public static IFactory<IEnemy> ShardsFactory { get; }
@@ -17,7 +17,7 @@ namespace Asteroids.GameLogic
         public static readonly IGamePoints GamePoints;
         public static readonly IPlayerStat PlayerStat;
 
-        static GameLogic()
+        static Logic()
         {
             EffectsProvider = new EffectsProvider();
             EnemyFactoryProvider = new EnemiesManagerProvider();

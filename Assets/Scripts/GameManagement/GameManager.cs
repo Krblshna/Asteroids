@@ -29,7 +29,7 @@ namespace Asteroids.GameManagement
         private void Awake()
         {
             base.Awake();
-            _gamePoints = GameLogic.GameLogic.GamePoints;
+            _gamePoints = GameLogic.Logic.GamePoints;
         }
 
         private void Start()
