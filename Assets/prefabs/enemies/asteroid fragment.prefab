@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3584732483449656855}
   - component: {fileID: 2901111353163592355}
   - component: {fileID: 5972851527927268943}
+  - component: {fileID: 5187227881033418018}
   m_Layer: 0
   m_Name: hitDetector
   m_TagString: Untagged
@@ -46,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7517ffa8485bdea4eb7e8f14769c31e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _log: 0
 --- !u!58 &2901111353163592355
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -83,6 +85,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5187227881033418018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434923721540106232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf0c226d6911c94497d955d87b88def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groupType: 0
 --- !u!1 &7910005337780104309
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +109,6 @@ GameObject:
   - component: {fileID: 7910005337780104308}
   - component: {fileID: 7910005337780104311}
   - component: {fileID: 7510919997816909436}
-  - component: {fileID: 8060696776145532682}
   m_Layer: 0
   m_Name: asteroid fragment
   m_TagString: Untagged
@@ -143,19 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c90852c68b8448848a023a7f88f5453e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8060696776145532682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7910005337780104309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbf0c226d6911c94497d955d87b88def, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _groupType: 0
 --- !u!1 &7910005338756690543
 GameObject:
   m_ObjectHideFlags: 0

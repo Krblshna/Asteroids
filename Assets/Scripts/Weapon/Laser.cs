@@ -1,48 +1,30 @@
 ﻿using Asteroids.Common;
+using Asteroids.Player;
 using Asteroids.Utility;
 using Asteroids.Weapon.FireDirection;
 using UnityEngine;
 
 namespace Asteroids.Weapon
 {
-    public class Laser : MonoBehaviour, IWeapon
+    public class Laser : MonoBehaviour, IWeaponView
     {
-        public int Ammo { get; private set; }
-        public float LaserCooldown => Ammo >= _maxAmmo ? 0 : _ammoRecoveryTime - _currentRecoveryTime;
-        [SerializeField] private float _currentRecoveryTime;
-        [SerializeField] private int _maxAmmo = 3;
-        [SerializeField] private int _ammoRecoveryTime = 5;
-        [SerializeField] private float _fireDelay = 5f;
-        [SerializeField] private float _laserLifeTime = 1f;
-        [SerializeField] private IFireDirection _fireDirection;
+        public WeaponType WeaponType => WeaponType.Laser;
+        private ILaser _laser;
+        private IFireDirection _fireDirection;
+        private GroupType _groupType;
         private LineRenderer _laserLine;
         private float _lastFireTime;
-        private GroupType _groupType;
         private bool _active;
 
-        private void Update()
+        public void CustomUpdate()
         {
-            RecoverAmmo();
-            if (!_active) return;
+            _laser.Update();
             UpdatePos();
-        }
-
-        private void RecoverAmmo()
-        {
-            if (Ammo >= _maxAmmo) return;
-            if (_currentRecoveryTime >= _ammoRecoveryTime)
-            {
-                _currentRecoveryTime = 0;
-                Ammo++;
-            }
-            else
-            {
-                _currentRecoveryTime += Time.deltaTime;
-            }
         }
 
         private void UpdatePos()
         {
+            if (!_active) return;
             _laserLine.SetPositions(new Vector3[]
             {
                 transform.position,
@@ -50,22 +32,17 @@ namespace Asteroids.Weapon
             });
         }
 
-        public void Init(GroupType groupType)
+        public void Init(IWeapon weapon)
         {
-            Ammo = _maxAmmo;
-            _groupType = groupType;
+            if (weapon is ILaser laser)
+            {
+                _laser = laser;
+                laser.BindActions(ActivateLaser, DeactivateLaser);
+            }
+
             _fireDirection = GetComponent<IFireDirection>();
             _laserLine = GetComponentInChildren<LineRenderer>(true);
-            GetComponentInChildren<Damager>(true).Init(_groupType);
-        }
-
-        public void Fire()
-        {
-            if (Ammo < 1) return;
-            if (Time.time > _fireDelay && Time.time - _lastFireTime < _fireDelay) return;
-            ActivateLaser();
-            Ammo--;
-            _lastFireTime = Time.time;
+            GetComponentInChildren<Damager>(true).Init(weapon.GroupType);
         }
 
         private void SetLaser(bool active)
@@ -83,7 +60,6 @@ namespace Asteroids.Weapon
         {
             SetLaser(true);
             UpdatePos();
-            Utils.Instance.setTimeOut(DeactivateLaser, _laserLifeTime);
         }
     }
 }

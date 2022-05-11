@@ -2,46 +2,44 @@
 
 namespace Asteroids.Player
 {
-    public class MovementController : MonoBehaviour, IMovementController
+    public class MovementController : IMovementController, IMoverData
     {
-        [SerializeField] private float _moveSpeed = 5;
-        [SerializeField] private float _rotationSpeed = 0.01f;
-        [SerializeField] private float _maxSpeed = 1f;
-        [SerializeField] private float _maxAngularVelocity = 1f;
-        private IInput _input;
-        private Transform _transform;
+        private readonly IVelocityMover _mover;
+        private readonly IVelocityRotator _rotator;
+        private readonly IInput _input;
+        private readonly Transform _transform;
+
+        private float _moveSpeed = 3;
+        private float _rotationSpeed = 120f;
+        private float _maxSpeed = 5f;
+        private float _maxAngularVelocity = 120f;
+        
         private Vector2 _velocityVector;
         private float _angularVelocity;
+        public Vector3 Position => _transform.position;
+        public Vector3 Velocity => _velocityVector;
+        public int Rotation => (int)_transform.eulerAngles.z;
 
-        public void Init(IInput input, Transform transform_)
+        public MovementController(IInput input, IVelocityMover mover, IVelocityRotator rotator, Transform transform)
         {
             _input = input;
-            _transform = transform_;
-        }
-
-        private void UpdateMovement()
-        {
-            _transform.Translate(_velocityVector * Time.deltaTime, Space.World);
-
-        }
-
-        private void UpdateRotation()
-        {
-            _transform.Rotate(0, 0, _angularVelocity * Time.deltaTime);
+            _transform = transform;
+            _mover = mover;
+            _rotator = rotator;
         }
 
         public void CustomUpdate()
         {
             UpdateControls();
-            UpdateMovement();
-            UpdateRotation();
+            _mover.Update(_velocityVector);
+            _rotator.Update(_angularVelocity);
         }
 
         public void UpdateControls()
         {
             if (_input.Up)
             {
-                var accelerationVector = transform.rotation * Vector2.up * _moveSpeed * Time.deltaTime;
+                var accelerationVector = _transform.rotation * Vector2.up * _moveSpeed * Time.deltaTime;
                 _velocityVector += (Vector2)accelerationVector;
                 _velocityVector = Vector2.ClampMagnitude(_velocityVector, _maxSpeed);
             }

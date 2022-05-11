@@ -6,9 +6,9 @@ using Asteroids.Common;
 
 namespace Asteroids.Statistics
 {
-    public class GamePoints : IPlayerStat
+    public class GamePoints : IGamePoints
     {
-        public int StatAmount { get; private set; }
+        public int Amount { get; private set; }
         private readonly Dictionary<StatType, int> _statTable = new Dictionary<StatType, int>()
         {
             {StatType.DestroyAsteroid, 10},
@@ -19,12 +19,12 @@ namespace Asteroids.Statistics
         public void TriggerStatEvent(StatType statType)
         {
             if (!_statTable.TryGetValue(statType, out var value)) return;
-            StatAmount += value;
+            Amount += value;
         }
 
         public void Clear()
         {
-            StatAmount = 0;
+            Amount = 0;
         }
     }
 }

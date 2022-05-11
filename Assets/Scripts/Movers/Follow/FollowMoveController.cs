@@ -1,4 +1,5 @@
-﻿using Asteroids.GameManagement;
+﻿using Asteroids.Common;
+using Asteroids.GameManagement;
 using UnityEngine;
 
 namespace Asteroids.Movers
@@ -13,9 +14,11 @@ namespace Asteroids.Movers
             _mover = mover;
             _velocity = velocity;
         }
+
         public void Move()
         {
-            _mover.StartFollow(_velocity);
+            var followable = GameManager.Instance.Player.GetComponent<IFollowable>();
+            _mover.StartFollow(followable, _velocity);
         }
 
         public void DoOnDestroy()

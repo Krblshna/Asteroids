@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7530339486539467275}
   - component: {fileID: 6356083231332976137}
   - component: {fileID: 7248976419581287061}
+  - component: {fileID: 8373179264827181571}
   m_Layer: 0
   m_Name: hitDetector
   m_TagString: Untagged
@@ -117,6 +118,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7517ffa8485bdea4eb7e8f14769c31e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _log: 0
+--- !u!114 &8373179264827181571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4592117454766794648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf0c226d6911c94497d955d87b88def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groupType: 0
 --- !u!1 &5260832566399128452
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +227,6 @@ GameObject:
   - component: {fileID: 5260832567537192351}
   - component: {fileID: 5260832567537192348}
   - component: {fileID: 8002186131156473579}
-  - component: {fileID: 8023377756955239636}
   m_Layer: 0
   m_Name: asteroid
   m_TagString: Untagged
@@ -261,16 +275,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc124a144620ca43bb1684bcb24213d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8023377756955239636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5260832567537192350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbf0c226d6911c94497d955d87b88def, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _groupType: 0

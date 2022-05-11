@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Asteroids.GameLogic
 {
-    public interface IEnemyFactory<T>
+    public interface IFactory<T>
     {
         T Create(Transform transform);
     }

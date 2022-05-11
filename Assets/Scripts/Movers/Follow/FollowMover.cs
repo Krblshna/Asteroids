@@ -8,21 +8,20 @@ namespace Asteroids.Movers
     {
         private readonly IBorderValidator _borderValidator;
         private readonly Transform _transform;
-        private readonly IFollowable _followable;
+        private IFollowable _followable;
 
         private float _velocity;
         private Vector2 _lastMoveDirection;
 
-        public FollowMover(Transform transform, IFollowable followable, IBorderValidator borderValidator)
+        public FollowMover(Transform transform, IBorderValidator borderValidator)
         {
             _transform = transform;
-            _followable = followable;
             _borderValidator = borderValidator;
         }
 
         public void Update()
         {
-            if (_followable.Active)
+            if (_followable != null && _followable.Active)
             {
                 FollowMove();
             }
@@ -47,8 +46,9 @@ namespace Asteroids.Movers
             _transform.position = _borderValidator.Validate(pos);
         }
 
-        public void StartFollow(float velocity)
+        public void StartFollow(IFollowable followable, float velocity)
         {
+            _followable = followable;
             _velocity = velocity;
         }
     }

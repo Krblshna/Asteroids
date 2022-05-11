@@ -9,30 +9,30 @@ namespace Asteroids.GameLogic
 {
     public class Asteroid : IEnemy
     {
-        public IMoveController MoveController { get; }
-        public IAction[] DestroyActions { get; }
+        private readonly IMoveController _moveController;
+        private readonly IAction[] _destroyActions;
         public GroupType GroupType { get; } = GroupType.Enemy;
 
         public Asteroid(IMoveController moveController, IAction[] destroyActions)
         {
-            MoveController = moveController;
-            DestroyActions = destroyActions;
+            _moveController = moveController;
+            _destroyActions = destroyActions;
         }
 
         public void Update()
         {
-            MoveController.Update();
+            _moveController.Update();
         }
 
         public void OnCreate()
         {
-            MoveController.Move();
+            _moveController.Move();
         }
 
         public void OnDestroy()
         {
-            MoveController.DoOnDestroy();
-            foreach (var destroyEvent in DestroyActions)
+            _moveController.DoOnDestroy();
+            foreach (var destroyEvent in _destroyActions)
             {
                 destroyEvent.Call();
             }

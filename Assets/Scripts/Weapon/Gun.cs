@@ -5,33 +5,40 @@ using UnityEngine.Pool;
 
 namespace Asteroids.Weapon
 {
-    public class Gun : MonoBehaviour, IWeapon
+    public class Gun : MonoBehaviour, IWeaponView
     {
+        public WeaponType WeaponType => WeaponType.Gun;
+
         private ObjectPool<IBullet> _pool;
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private float _fireDelay = 0.1f;
         [SerializeField] private float _bulletSpeed = 10f;
         [SerializeField] private float _bulletLifeTime = 2f;
-        [SerializeField] private IFireDirection _fireDirection;
-        private float _lastFireTime;
+        private IFireDirection _fireDirection;
         private GroupType _groupType;
+        private IGun _gun;
 
+        public void CustomUpdate(){}
         private void Awake()
         {
             _fireDirection = GetComponent<IFireDirection>();
             _pool = new ObjectPool<IBullet>(CreateBullet, OnGet, OnRelease);
         }
 
-        public void Init(GroupType groupType)
+        public void Init(IWeapon weapon)
         {
-            _groupType = groupType;
+            if (weapon is IGun gun)
+            {
+                _gun = gun;
+                _gun.BindActions(Fire);
+            }
+
+            _groupType = weapon.GroupType;
         }
 
         public void Fire()
         {
-            if (Time.time - _lastFireTime < _fireDelay) return;
             var bullet = _pool.Get();
-            _lastFireTime = Time.time;
         }
 
         IBullet CreateBullet()

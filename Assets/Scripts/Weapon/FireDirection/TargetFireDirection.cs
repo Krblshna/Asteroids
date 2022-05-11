@@ -8,11 +8,11 @@ namespace Asteroids.Weapon.FireDirection
 
         public void Start()
         {
-            var player = GameObject.FindObjectOfType<Player.Player>();
-            if (player != null)
-            {
-                _targetTransform = player.transform;
-            }
+            //var player = GameObject.FindObjectOfType<Player.Player>();
+            //if (player != null)
+            //{
+            //    _targetTransform = player.transform;
+            //}
         }
         public Vector2 GetDirection()
         {

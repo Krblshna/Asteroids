@@ -7,17 +7,17 @@ namespace Asteroids.Actions
     public class StatAction : IAction
     {
         private readonly StatType _statEvent;
-        private readonly IPlayerStat _playerStat;
+        private readonly IGamePoints _gamePoints;
 
-        public StatAction(IPlayerStat playerStat, StatType statEvent)
+        public StatAction(IGamePoints gamePoints, StatType statEvent)
         {
-            _playerStat = playerStat;
+            _gamePoints = gamePoints;
             _statEvent = statEvent;
         }
 
         public void Call()
         {
-            _playerStat.TriggerStatEvent(_statEvent);
+            _gamePoints.TriggerStatEvent(_statEvent);
         }
     }
 }

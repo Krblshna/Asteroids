@@ -1,4 +1,5 @@
 ﻿using System;
+using Asteroids.Actions;
 using Asteroids.Common;
 using Asteroids.Effect;
 using Asteroids.GameManagement;
@@ -8,49 +9,42 @@ using UnityEngine;
 
 namespace Asteroids.Player
 {
-    public class Player : MonoBehaviour, IDestructible
+    public class Player : IPlayer
     {
-        private GroupType _groupType = GroupType.Ally;
-        private IMovementController _movementController;
-        private WeaponController _weaponController;
-        private IInput _input;
-        
-        private float ship_size = 0.46f;
+        public GroupType GroupType { get; }
+        public IWeaponController WeaponController { get; }
+        public IMovementController MovementController { get; }
+        private readonly IInput _input;
+        private readonly IAction[] _destroyActions;
 
-        void Awake()
+        public Player(IMovementController movementController, 
+            IWeaponController weaponController, 
+            IInput input, 
+            GroupType groupType, 
+            IAction[] destroyActions)
         {
-            var body = GetComponent<Rigidbody2D>();
-            _input = GetComponent<IInput>();
-            _movementController = GetComponent<IMovementController>();
-            _movementController.Init(_input, transform);
-            _weaponController = GetComponentInChildren<WeaponController>();
-            _weaponController.Init(_input, _groupType);
+            MovementController = movementController;
+            WeaponController = weaponController;
+            _input = input;
+            _destroyActions = destroyActions;
+            GroupType = groupType;
         }
 
-        public Rigidbody2D GetBody()
-        {
-            return GetComponent<Rigidbody2D>();
-        }
-        void Update()
+        public void Update()
         {
             _input.CustomUpdate();
-            _weaponController.CustomUpdate();
-            _movementController.CustomUpdate();
-            transform.position = ScreenData.ValidatePos(transform.position, ship_size);
+            WeaponController.CustomUpdate();
+            MovementController.CustomUpdate();
         }
 
-        public bool Hit(GroupType hitGroup)
+        public void OnDestroy()
         {
-            if (hitGroup == _groupType) return false;
-            gameObject.SetActive(false);
-            //EffectsManager.Instance.CreateEffect(EffectType.DeathBig, transform.position);
-            GameManager.Instance.Finish();
-            return true;
-        }
+            foreach (var action in _destroyActions)
+            {
+                action.Call();
+            }
 
-        public void Hit()
-        {
-            throw new NotImplementedException();
+            _input.OnDestroy();
         }
     }
 }

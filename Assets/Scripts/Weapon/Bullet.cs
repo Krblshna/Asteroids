@@ -13,17 +13,20 @@ namespace Asteroids.Weapon
     public class Bullet : MonoBehaviour, IBullet
     {
         private float _speed;
+        private float _bodySize = 0.07f;
         private GroupType _groupType;
         private IMover _mover;
         private Action<IBullet> _onDestroyAction;
-        private float _bodySize = 0.07f;
         private WaitForSeconds _lifeTimeWait;
         private IEnumerator _destroyEn;
+        private Damager _damager;
 
         void Awake()
         {
             _mover = new SimpleMover(transform, new BorderValidator(_bodySize));
+            _damager = GetComponentInChildren<Damager>();
         }
+
         public void SetActive(bool active)
         {
             gameObject.SetActive(active);
@@ -34,17 +37,6 @@ namespace Asteroids.Weapon
             _mover.Update();
         }
 
-        private void OnTriggerEnter2D(Collider2D coll)
-        {
-            var hitDetector = coll.GetComponent<IHitDetector>();
-            if (hitDetector != null)
-            {
-                var hit = hitDetector.Hit(_groupType);
-                if (!hit) return;
-                DoDestroy();
-            }
-        }
-
         private void DoDestroy()
         {
             if (!gameObject.activeSelf) return;
@@ -53,7 +45,6 @@ namespace Asteroids.Weapon
                 StopCoroutine(_destroyEn);
                 _destroyEn = null;
             }
-
             _mover.DoOnDestroy();
             _onDestroyAction?.Invoke(this);
         }
@@ -64,6 +55,7 @@ namespace Asteroids.Weapon
             _onDestroyAction = onDestroyAction;
             _speed = speed;
             _lifeTimeWait = new WaitForSeconds(lifeTime);
+            _damager.Init(_groupType, DoDestroy);
         }
 
         public void OnActivate(Vector2 initPos, Vector2 direction)

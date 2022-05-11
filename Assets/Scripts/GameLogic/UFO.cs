@@ -7,25 +7,25 @@ namespace Asteroids.GameLogic
 {
     public class UFO : IEnemy
     {
-        public IMoveController MoveController { get; }
-        public IAction[] DestroyActions { get; }
+        private readonly IMoveController _moveController;
+        private readonly IAction[] _destroyActions;
         public GroupType GroupType { get; } = GroupType.Enemy;
 
         public UFO(IMoveController moveController, IAction[] destroyActions)
         {
-            MoveController = moveController;
-            DestroyActions = destroyActions;
+            _moveController = moveController;
+            _destroyActions = destroyActions;
         }
 
         public void OnCreate()
         {
-            MoveController.Move();
+            _moveController.Move();
         }
 
         public void OnDestroy()
         {
-            MoveController.DoOnDestroy();
-            foreach (var destroyEvent in DestroyActions)
+            _moveController.DoOnDestroy();
+            foreach (var destroyEvent in _destroyActions)
             {
                 destroyEvent.Call();
             }
@@ -33,7 +33,7 @@ namespace Asteroids.GameLogic
 
         public void Update()
         {
-            MoveController.Update();;
+            _moveController.Update();;
         }
     }
 }

@@ -10,22 +10,18 @@ namespace Asteroids.UI
 {
     public class ShipStats : MonoBehaviour
     {
-        private Player.Player _player;
-        private Laser _laser;
         [SerializeField] private int maxUpdateTimesPerSecond = 10;
+
         private TextMeshProUGUI _textMesh;
-        private Rigidbody2D _body;
         private float _updateDelta = 0;
         private float _lastUpdateTime = 0;
+        private IPlayerStat _playerStat;
 
-        private IEnumerator Start()
+        private void Start()
         {
-            yield return null;
+            _playerStat = GameLogic.GameLogic.PlayerStat;
             _updateDelta = 1.0f / maxUpdateTimesPerSecond;
             _textMesh = GetComponent<TextMeshProUGUI>();
-            _player = FindObjectOfType<Player.Player>();
-            _laser = _player.GetComponentInChildren<Laser>();
-            _body = _player.GetBody();
         }
 
         private void Update()
@@ -39,16 +35,17 @@ namespace Asteroids.UI
 
         private void UpdateStat()
         {
-            if (_body == null) return;
-            var pos = _body.position;
-            var velocity = _body.velocity;
-            var angle = (int)Mathf.Abs(_body.rotation % 360);
+            var moveData = _playerStat.MoveData;
+            var laserData = _playerStat.LaserData;
+            var pos = moveData.Position;
+            var velocity = moveData.Velocity;
+            var angle = Mathf.Abs(moveData.Rotation % 360);
             StringBuilder sb = new StringBuilder(100);
             sb.Append($"Coordinate: ({pos.x:0.0}, {pos.y:0.0})\n");
             sb.Append($"Rotation angle: {angle}\n");
             sb.Append($"Velocity: ({velocity.x:0.0}, {velocity.y:0.0})\n");
-            sb.Append($"Lazer charges: {_laser.Ammo} \n");
-            sb.Append($"Lazer cooldown: {_laser.LaserCooldown:0.0} \n");
+            sb.Append($"Lazer charges: {laserData.Ammo} \n");
+            sb.Append($"Lazer cooldown: {laserData.LaserCooldown:0.0} \n");
             _textMesh.text = sb.ToString();
         }
     }

@@ -2,6 +2,6 @@
 {
     public interface IDestructible
     {
-        void Hit();
+        void Hit(GroupType hitGroup);
     }
 }

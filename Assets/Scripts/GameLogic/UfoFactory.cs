@@ -11,18 +11,18 @@ using UnityEngine;
 
 namespace Asteroids.GameLogic
 {
-    public class UfoFactory : IEnemyFactory<IEnemy>
+    public class UfoFactory : IFactory<IEnemy>
     {
         private readonly IEffectsProvider _effectsProvider;
-        private readonly IPlayerStat _playerStat;
+        private readonly IGamePoints _gamePoints;
         private readonly float _bodySize, _velocity;
         public UfoFactory(IEffectsProvider effectsProvider, 
-            IPlayerStat playerStat,
+            IGamePoints gamePoints,
             float velocity,
             float bodySize)
         {
             _effectsProvider = effectsProvider;
-            _playerStat = playerStat;
+            _gamePoints = gamePoints;
             _bodySize = bodySize;
             _velocity = velocity;
         }
@@ -30,13 +30,12 @@ namespace Asteroids.GameLogic
         public IEnemy Create(Transform transform)
         {
             var borderValidator = new BorderValidator(_bodySize);
-            var dumbPlayer = new DumbPlayer();
-            var mover = new FollowMover(transform, dumbPlayer, borderValidator);
+            var mover = new FollowMover(transform, borderValidator);
             var moveController = new FollowMoveController(mover, _velocity);
             var destroyActions = new IAction[]
             {
                 new ParticleAction(_effectsProvider, transform,  EffectType.DeathBig),
-                new StatAction(_playerStat, StatType.DestroyAsteroid)
+                new StatAction(_gamePoints, StatType.DestroyAsteroid)
             };
             return new UFO(moveController, destroyActions);
         }

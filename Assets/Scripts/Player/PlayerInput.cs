@@ -1,34 +1,41 @@
 ﻿using System;
+using Asteroids.Common;
 using Asteroids.Input;
 using UnityEngine;
 
 namespace Asteroids.Player
 {
-    public class PlayerInput : MonoBehaviour, IInput
+    public class PlayerInput : IInput
     {
-        
+        private readonly PlayerControls _playerControls;
+
         public bool Left { get; private set; }
         public bool Right { get; private set; }
         public bool Up { get; private set; }
-        public bool Fire { get; private set; }
-        public bool AltFire { get; private set; }
-        private float _minSensitivity = 0.3f;
-        private PlayerControls _playerControls;
+        private bool _fire;
+        private bool _altFire;
         private float _tolerance = 0.01f;
 
-        private void Awake()
+        public PlayerInput()
         {
             _playerControls = new PlayerControls();
-        }
-
-        private void OnEnable()
-        {
             _playerControls.Enable();
         }
 
-        private void OnDisable()
+        public bool IsFire(FireType fireType)
         {
-            _playerControls.Disable();
+            switch (fireType)
+            {
+                case FireType.MainFire:
+                {
+                    return _fire;
+                }
+                case FireType.AltFire:
+                {
+                    return _altFire;
+                }
+            }
+            return false;
         }
 
         public void CustomUpdate()
@@ -36,8 +43,13 @@ namespace Asteroids.Player
             Up = Math.Abs(_playerControls.Main.Move.ReadValue<float>() - 1) < _tolerance;
             Left = Math.Abs(_playerControls.Main.RotateLeft.ReadValue<float>() - 1) < _tolerance;
             Right = Math.Abs(_playerControls.Main.RotateRight.ReadValue<float>() - 1) < _tolerance;
-            Fire = Math.Abs(_playerControls.Main.Fire.ReadValue<float>() - 1) < _tolerance;
-            AltFire = Math.Abs(_playerControls.Main.AltFire.ReadValue<float>() - 1) < _tolerance;
+            _fire = Math.Abs(_playerControls.Main.Fire.ReadValue<float>() - 1) < _tolerance;
+            _altFire = Math.Abs(_playerControls.Main.AltFire.ReadValue<float>() - 1) < _tolerance;
+        }
+
+        public void OnDestroy()
+        {
+            _playerControls.Disable();
         }
     }
 }

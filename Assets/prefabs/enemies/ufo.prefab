@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7014001520651178052}
   - component: {fileID: 2659722965841188246}
   - component: {fileID: 7016472644715357601}
+  - component: {fileID: 1718879938726535616}
   m_Layer: 0
   m_Name: hitDetector
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7517ffa8485bdea4eb7e8f14769c31e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _log: 0
 --- !u!61 &7014001520651178052
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -120,6 +122,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1718879938726535616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617266748519615532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf0c226d6911c94497d955d87b88def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groupType: 0
 --- !u!1 &3987477668734348337
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +230,6 @@ GameObject:
   - component: {fileID: 6406007480035666419}
   - component: {fileID: -6611670984009212433}
   - component: {fileID: 8486669815200011979}
-  - component: {fileID: 5203820248263111836}
   m_Layer: 0
   m_Name: ufo
   m_TagString: Untagged
@@ -264,16 +278,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5abb2fa08b2441e4db05251916354e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5203820248263111836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6406007480035666382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbf0c226d6911c94497d955d87b88def, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _groupType: 0

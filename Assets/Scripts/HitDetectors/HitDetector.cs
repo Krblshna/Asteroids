@@ -7,6 +7,7 @@ namespace Asteroids.HitDetectors
 {
     public class HitDetector : MonoBehaviour, IHitDetector
     {
+        [SerializeField] private bool _log;
         private IFriendlyFireChecker _friendlyFireChecker;
         private Action _onHit;
 
@@ -18,6 +19,10 @@ namespace Asteroids.HitDetectors
 
         public bool Hit(GroupType groupType)
         {
+            if (_log)
+            {
+                var a = 1;
+            }
             if (_friendlyFireChecker.IsFriendly(groupType)) return false;
             _onHit?.Invoke();
             return true;

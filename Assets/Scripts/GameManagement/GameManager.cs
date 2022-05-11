@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Asteroids.Common;
 using Asteroids.Enemies;
+using Asteroids.Player;
 using Asteroids.Statistics;
+using Asteroids.UI;
 using Asteroids.Utility;
 using TMPro;
 using UnityEngine;
@@ -17,11 +19,18 @@ namespace Asteroids.GameManagement
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private GameObject _gameoverPanel;
         [SerializeField] private TextMeshProUGUI _textMesh;
-        
+
         private List<Vector2> usedPoses = new List<Vector2>();
         private bool _restart;
         private int _maxRandTries = 30;
         public GameObject Player { get; private set; }
+        private IGamePoints _gamePoints;
+
+        private void Awake()
+        {
+            base.Awake();
+            _gamePoints = GameLogic.GameLogic.GamePoints;
+        }
 
         private void Start()
         {
@@ -36,6 +45,8 @@ namespace Asteroids.GameManagement
         private void SpawnPlayer()
         {
             Player = Instantiate(_playerPrefab, Vector3.zero, Quaternion.identity);
+            var playerView = Player.GetComponent<PlayerView>();
+            playerView.Init(Finish);
             usedPoses.Add(Player.transform.position);
         }
 
@@ -75,14 +86,14 @@ namespace Asteroids.GameManagement
         private void RestartGame()
         {
             _restart = false;
-            //GamePoints.Clear();
+            _gamePoints.Clear();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
         }
 
         public void Finish()
         {
             _gameoverPanel.SetActive(true);
-            //_textMesh.text = $"Your Points: {GamePoints.StatAmount}";
+            _textMesh.text = $"Your Points: {_gamePoints.Amount}";
             Utils.Instance.setTimeOut(RestartGame, 3f);
         }
     }
