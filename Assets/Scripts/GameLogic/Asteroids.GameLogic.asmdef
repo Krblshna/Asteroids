@@ -1,0 +1,17 @@
+{
+    "name": "Asteroids.GameLogic",
+    "rootNamespace": "Asteroids",
+    "references": [
+        "GUID:8b9ee4c481893f942bbe8ec1ddb6ac67",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

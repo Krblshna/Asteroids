@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Asteroids.Common;
+using Asteroids.GameLogic;
 using Asteroids.Utility;
 using UnityEngine;
 
 namespace Asteroids.Effect
 {
-    public enum EffectType { DeathBig, DeathMiddle, DeathMini}
     public class EffectsManager : MonoBehaviour, IEffectsManager
     {
         [SerializeField] private EffectPool[] _effects;
@@ -14,7 +15,7 @@ namespace Asteroids.Effect
 
         public void Awake()
         {
-            _effectProvider = GameLogic.Logic.EffectsProvider;
+            _effectProvider = Logic.EffectsProvider;
             _effectProvider.Init(Create);
             foreach (var effectPool in _effects)
             {

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Text;
+using Asteroids.GameLogic;
 using Asteroids.Weapon;
 using UnityEngine;
 using TMPro;
@@ -19,7 +20,7 @@ namespace Asteroids.UI
 
         private void Start()
         {
-            _playerStat = GameLogic.Logic.PlayerStat;
+            _playerStat = Logic.PlayerStat;
             _updateDelta = 1.0f / maxUpdateTimesPerSecond;
             _textMesh = GetComponent<TextMeshProUGUI>();
         }

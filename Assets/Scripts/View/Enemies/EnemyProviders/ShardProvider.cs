@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Asteroids.Enemies.EnemyProviders
 {
-    public class AsteroidProvider : MonoBehaviour, IEnemyProvider
+    public class ShardProvider : MonoBehaviour, IEnemyProvider
     {
         public IEnemy GetModel()
         {
-            return GameLogic.Logic.AsteroidFactory.Create(transform);
+            return Logic.ShardsFactory.Create(transform);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Asteroids.Common;
+using Asteroids.GameLogic;
 using Asteroids.Utility;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace Asteroids.Enemies
 
         public void Awake()
         {
-            _enemyFactoryProvider = GameLogic.Logic.EnemyFactoryProvider;
+            _enemyFactoryProvider = Logic.EnemyFactoryProvider;
             _enemyFactoryProvider.Init(Create);
             foreach (var effectPool in _pools)
             {

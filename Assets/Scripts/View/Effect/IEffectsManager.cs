@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Asteroids.Common;
+using UnityEngine;
 
 namespace Asteroids.Effect
 {

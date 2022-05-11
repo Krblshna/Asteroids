@@ -1,9 +1,7 @@
 ﻿using Asteroids.Actions;
 using Asteroids.Common;
 using Asteroids.Enemies;
-using Asteroids.HitDetectors;
 using Asteroids.Movers;
-using Asteroids.Test2;
 
 namespace Asteroids.GameLogic
 {

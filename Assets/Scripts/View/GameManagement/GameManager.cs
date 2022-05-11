@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Asteroids.Common;
 using Asteroids.Enemies;
+using Asteroids.GameLogic;
 using Asteroids.Player;
 using Asteroids.Statistics;
 using Asteroids.UI;
@@ -29,7 +30,7 @@ namespace Asteroids.GameManagement
         private void Awake()
         {
             base.Awake();
-            _gamePoints = GameLogic.Logic.GamePoints;
+            _gamePoints = Logic.GamePoints;
         }
 
         private void Start()

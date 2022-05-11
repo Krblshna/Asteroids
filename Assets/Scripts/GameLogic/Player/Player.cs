@@ -2,7 +2,6 @@
 using Asteroids.Actions;
 using Asteroids.Common;
 using Asteroids.Effect;
-using Asteroids.GameManagement;
 using Asteroids.Utility;
 using Asteroids.Weapon;
 using UnityEngine;

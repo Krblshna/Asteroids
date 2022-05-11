@@ -1,6 +1,5 @@
 ﻿using Asteroids.Actions;
 using Asteroids.Common;
-using Asteroids.HitDetectors;
 using Asteroids.Movers;
 
 namespace Asteroids.GameLogic

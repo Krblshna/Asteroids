@@ -1,6 +1,7 @@
 ﻿using System;
 using Asteroids.Common;
 using Asteroids.Effect;
+using Asteroids.GameLogic;
 using Asteroids.GameManagement;
 using Asteroids.HitDetectors;
 using Asteroids.Utility;
@@ -23,7 +24,7 @@ namespace Asteroids.Player
         public void Init(Action onDestroy)
         {
             _onDestroy = onDestroy;
-            Player = GameLogic.Logic.PlayerFactory.Create(transform);
+            Player = Logic.PlayerFactory.Create(transform);
             _hitDetector = GetComponentInChildren<IHitDetector>();
             _hitDetector.Init(Player.GroupType, Hit);
             var weaponControllerView = GetComponentInChildren<WeaponControllerView>();

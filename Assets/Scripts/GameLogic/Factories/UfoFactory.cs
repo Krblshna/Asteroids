@@ -1,12 +1,9 @@
 ﻿using Asteroids.Actions;
 using Asteroids.Common;
 using Asteroids.Effect;
-using Asteroids.Enemies;
-using Asteroids.HitDetectors;
 using Asteroids.Movers;
 using Asteroids.PositionValidators;
 using Asteroids.Statistics;
-using Asteroids.Test2;
 using UnityEngine;
 
 namespace Asteroids.GameLogic

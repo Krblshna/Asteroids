@@ -1,5 +1,6 @@
 ﻿namespace Asteroids.Common
 {
+    public enum EffectType { DeathBig, DeathMiddle, DeathMini }
     public enum WeaponType { Gun, Laser}
     public enum FireType { MainFire, AltFire}
     public enum GroupType { Enemy, Ally }
