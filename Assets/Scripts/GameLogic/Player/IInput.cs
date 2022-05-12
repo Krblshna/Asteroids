@@ -7,6 +7,7 @@ namespace Asteroids.GameLogic.Player
         bool Left { get;  }
         bool Right { get;  }
         bool Up { get;  }
+        bool Fire { get; }
         bool IsFire(FireType fireType);
         void CustomUpdate();
         void OnDestroy();

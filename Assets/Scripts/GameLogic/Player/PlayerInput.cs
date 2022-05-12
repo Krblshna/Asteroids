@@ -11,7 +11,7 @@ namespace Asteroids.GameLogic.Player
         public bool Left { get; private set; }
         public bool Right { get; private set; }
         public bool Up { get; private set; }
-        private bool _fire;
+        public bool Fire { get; private set; }
         private bool _altFire;
         private float _tolerance = 0.01f;
 
@@ -27,7 +27,7 @@ namespace Asteroids.GameLogic.Player
             {
                 case FireType.MainFire:
                 {
-                    return _fire;
+                    return Fire;
                 }
                 case FireType.AltFire:
                 {
@@ -42,7 +42,7 @@ namespace Asteroids.GameLogic.Player
             Up = Math.Abs(_playerControls.Main.Move.ReadValue<float>() - 1) < _tolerance;
             Left = Math.Abs(_playerControls.Main.RotateLeft.ReadValue<float>() - 1) < _tolerance;
             Right = Math.Abs(_playerControls.Main.RotateRight.ReadValue<float>() - 1) < _tolerance;
-            _fire = Math.Abs(_playerControls.Main.Fire.ReadValue<float>() - 1) < _tolerance;
+            Fire = Math.Abs(_playerControls.Main.Fire.ReadValue<float>() - 1) < _tolerance;
             _altFire = Math.Abs(_playerControls.Main.AltFire.ReadValue<float>() - 1) < _tolerance;
         }
 

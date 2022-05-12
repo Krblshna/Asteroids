@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Asteroids.GameLogic;
+using Asteroids.GameLogic.Player;
 using Asteroids.GameLogic.Statistics;
 using Asteroids.GameLogic.Utility;
 using Asteroids.View.Player;
@@ -18,18 +19,32 @@ namespace Asteroids.View.GameManagement
 
         private readonly List<Vector2> usedPoses = new List<Vector2>();
         private bool _restart;
+        private bool _finished;
+        private bool _couldSkip;
         private int _maxRandTries = 30;
         public GameObject Player { get; private set; }
         private IGamePoints _gamePoints;
+        private IInput _input;
 
         private void Awake()
         {
             _gamePoints = Logic.GamePoints;
+            _input = new PlayerInput();
         }
 
         private void Start()
         {
             StartNewGame();
+        }
+
+        void Update()
+        {
+            if (!_finished || _restart || !_couldSkip) return;
+            _input.CustomUpdate();
+            if (_input.Fire)
+            {
+                RestartGame();
+            }
         }
 
         private void StartNewGame()
@@ -47,16 +62,20 @@ namespace Asteroids.View.GameManagement
 
         private void RestartGame()
         {
-            _restart = false;
+            _restart = true;
             _gamePoints.Clear();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
         }
 
         public void Finish()
         {
+            _finished = true;
             _gameoverPanel.SetActive(true);
             _textMesh.text = $"Your Points: {_gamePoints.Amount}";
-            Utils.Instance.setTimeOut(RestartGame, 3f);
+            Utils.Instance.setTimeOut(() =>
+            {
+                _couldSkip = true;
+            }, 0.5f);
         }
     }
 }
