@@ -1,4 +1,4 @@
-﻿namespace Asteroids.Actions
+﻿namespace Asteroids.GameLogic.Actions
 {
     public interface IAction
     {

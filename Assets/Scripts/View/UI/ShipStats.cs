@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Text;
+﻿using System.Text;
 using Asteroids.GameLogic;
-using Asteroids.Weapon;
+using Asteroids.GameLogic.Player;
 using UnityEngine;
 using TMPro;
-using Asteroids.Statistics;
-using Asteroids.Player;
 
-namespace Asteroids.UI
+namespace Asteroids.View.UI
 {
     public class ShipStats : MonoBehaviour
     {

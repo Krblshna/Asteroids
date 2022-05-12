@@ -1,13 +1,13 @@
-﻿using Asteroids.Actions;
-using Asteroids.Common;
-using Asteroids.Effect;
-using Asteroids.Enemies;
-using Asteroids.Statistics;
-using Asteroids.Movers;
-using Asteroids.PositionValidators;
+﻿using Asteroids.GameLogic.Actions;
+using Asteroids.GameLogic.Common;
+using Asteroids.GameLogic.Enemies;
+using Asteroids.GameLogic.PositionValidators;
+using Asteroids.GameLogic.Movers;
+using Asteroids.GameLogic.Providers;
+using Asteroids.GameLogic.Statistics;
 using UnityEngine;
 
-namespace Asteroids.GameLogic
+namespace Asteroids.GameLogic.Factories
 {
     public class ShardsFactory : IFactory<IEnemy>
     {

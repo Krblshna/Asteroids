@@ -1,8 +1,9 @@
-﻿using Asteroids.Common;
+﻿using Asteroids.GameLogic.Common;
+using Asteroids.View.Enemies;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace Asteroids.Enemies
+namespace Asteroids.View.Pool
 {
     [System.Serializable]
     public class EnemyPool : IEnemyPool

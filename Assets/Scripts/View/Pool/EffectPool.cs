@@ -1,8 +1,9 @@
-﻿using Asteroids.Common;
+﻿using Asteroids.GameLogic.Common;
+using Asteroids.View.Effect;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace Asteroids.Effect
+namespace Asteroids.View.Pool
 {
     [System.Serializable]
     public class EffectPool : IEffectPool

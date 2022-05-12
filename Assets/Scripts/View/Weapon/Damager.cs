@@ -1,9 +1,9 @@
-﻿using Asteroids.Common;
-using Asteroids.HitDetectors;
+﻿using Asteroids.GameLogic.Common;
+using Asteroids.View.HitDetectors;
 using Unity.Plastic.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-namespace Asteroids.Weapon
+namespace Asteroids.View.Weapon
 {
     public class Damager : MonoBehaviour
     {

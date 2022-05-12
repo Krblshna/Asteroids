@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
-using Asteroids.Utility;
-using UnityEngine;
-using System;
-using Asteroids.Common;
+using Asteroids.GameLogic.Common;
 
-namespace Asteroids.Statistics
+namespace Asteroids.GameLogic.Statistics
 {
     public class GamePoints : IGamePoints
     {

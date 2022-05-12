@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace Asteroids.Movers
+namespace Asteroids.GameLogic.Movers
 {
     public interface IMover
     {

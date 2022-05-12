@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Asteroids.Common;
-using Asteroids.Weapon;
-using UnityEngine;
+using Asteroids.GameLogic.Common;
+using Asteroids.GameLogic.Weapon;
 
-namespace Asteroids.Player
+namespace Asteroids.GameLogic.Player
 {
     public class WeaponController : IWeaponController
     {

@@ -815,7 +815,6 @@ MonoBehaviour:
   _playerPrefab: {fileID: 19522058620482624, guid: 13be9e598c6b86f4f932fa3e073f7445, type: 3}
   _gameoverPanel: {fileID: 222240255}
   _textMesh: {fileID: 1417231580}
-  _shipStats: {fileID: 1492403288}
 --- !u!1 &1492403284
 GameObject:
   m_ObjectHideFlags: 0

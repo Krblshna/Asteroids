@@ -1,13 +1,9 @@
 ﻿using System;
-using Asteroids.Common;
+using Asteroids.GameLogic.Common;
 using UnityEngine;
 
-namespace Asteroids.Weapon
+namespace Asteroids.GameLogic.Weapon
 {
-    public interface IGun : IWeapon
-    {
-        void BindActions(Action onFire);
-    }
     public class GunModel : IGun
     {
         public WeaponType WeaponType => WeaponType.Gun;

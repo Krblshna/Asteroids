@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections;
-using Asteroids.Common;
-using Asteroids.HitDetectors;
-using Asteroids.Movers;
-using Asteroids.PositionValidators;
-using Asteroids.Utility;
+using Asteroids.GameLogic.Common;
+using Asteroids.GameLogic.Movers;
+using Asteroids.GameLogic.PositionValidators;
 using UnityEngine;
 
-namespace Asteroids.Weapon
+namespace Asteroids.View.Weapon
 {
     
     public class Bullet : MonoBehaviour, IBullet

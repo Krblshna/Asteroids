@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Asteroids.Common;
-using Asteroids.Utility;
+using Asteroids.GameLogic.Common;
 using UnityEngine;
 
-namespace Asteroids.Enemies
+namespace Asteroids.GameLogic.Providers
 {
     public class EnemiesManagerProvider : IEnemyFactoryProvider
     {

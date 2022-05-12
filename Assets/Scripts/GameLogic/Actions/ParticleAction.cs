@@ -1,8 +1,8 @@
-﻿using Asteroids.Common;
-using Asteroids.Effect;
+﻿using Asteroids.GameLogic.Common;
+using Asteroids.GameLogic.Providers;
 using UnityEngine;
 
-namespace Asteroids.Actions
+namespace Asteroids.GameLogic.Actions
 {
     public class ParticleAction : IAction
     {

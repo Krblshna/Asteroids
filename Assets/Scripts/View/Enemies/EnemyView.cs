@@ -1,13 +1,10 @@
 ﻿using System;
-using Asteroids.Actions;
-using Asteroids.Common;
-using Asteroids.Enemies.EnemyProviders;
-using Asteroids.GameLogic;
-using Asteroids.HitDetectors;
-using Asteroids.Movers;
+using Asteroids.GameLogic.Common;
+using Asteroids.GameLogic.Enemies;
+using Asteroids.View.HitDetectors;
 using UnityEngine;
 
-namespace Asteroids.Enemies
+namespace Asteroids.View.Enemies
 {
     public class EnemyView : MonoBehaviour, IEnemyView
     {

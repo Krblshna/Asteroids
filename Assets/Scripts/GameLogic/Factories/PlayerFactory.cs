@@ -1,30 +1,32 @@
-﻿using Asteroids.Actions;
-using Asteroids.Common;
-using Asteroids.Effect;
-using Asteroids.Enemies;
-using Asteroids.Statistics;
-using Asteroids.Movers;
-using Asteroids.Player;
-using Asteroids.PositionValidators;
-using Asteroids.Weapon;
+﻿using Asteroids.GameLogic.Actions;
+using Asteroids.GameLogic.Common;
+using Asteroids.GameLogic.Enemies;
+using Asteroids.GameLogic.PositionValidators;
+using Asteroids.GameLogic.Providers;
+using Asteroids.GameLogic.Weapon;
+using Asteroids.GameLogic.Movers;
+using Asteroids.GameLogic.Player;
 using UnityEngine;
 
-namespace Asteroids.GameLogic
+namespace Asteroids.GameLogic.Factories
 {
     public class PlayerFactory : IFactory<IPlayer>
     {
         private readonly IEffectsProvider _effectsProvider;
         private GroupType _groupType = GroupType.Ally;
         private readonly IPlayerStat _playerStat;
+        private readonly IPosProvider _posProvider;
         private readonly float _bodySize;
 
         public PlayerFactory(
             IEffectsProvider effectsProvider,
+            IPosProvider posProvider,
             IPlayerStat playerStat,
             float bodySize = 0.46f
             )
         {
             _effectsProvider = effectsProvider;
+            _posProvider = posProvider;
             _playerStat = playerStat;
             _bodySize = bodySize;
         }
@@ -49,6 +51,7 @@ namespace Asteroids.GameLogic
                 new ParticleAction(_effectsProvider, transform,  EffectType.DeathBig),
             };
             _playerStat.BindData(moveController, laserModel);
+            _posProvider.Init(transform);
             return new Player.Player(moveController, weaponController, input, _groupType, destroyActions);
         }
     }

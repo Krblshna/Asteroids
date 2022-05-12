@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Asteroids.Common
+namespace Asteroids.GameLogic.Common
 {
     public interface IFollowable
     {

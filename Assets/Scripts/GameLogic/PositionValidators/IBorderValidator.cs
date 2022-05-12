@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Asteroids.PositionValidators
+namespace Asteroids.GameLogic.PositionValidators
 {
     public interface IBorderValidator
     {

@@ -1,9 +1,9 @@
-﻿using Asteroids.Common;
-using Asteroids.Weapon.FireDirection;
+﻿using Asteroids.GameLogic.Common;
+using Asteroids.GameLogic.Weapon;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace Asteroids.Weapon
+namespace Asteroids.View.Weapon
 {
     public class Gun : MonoBehaviour, IWeaponView
     {

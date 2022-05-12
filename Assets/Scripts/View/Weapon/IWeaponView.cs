@@ -1,6 +1,7 @@
-﻿using Asteroids.Common;
+﻿using Asteroids.GameLogic.Common;
+using Asteroids.GameLogic.Weapon;
 
-namespace Asteroids.Weapon
+namespace Asteroids.View.Weapon
 {
     public interface IWeaponView
     {

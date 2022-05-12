@@ -1,7 +1,7 @@
-﻿using Asteroids.Common;
-using Asteroids.Weapon;
+﻿using Asteroids.GameLogic.Common;
+using Asteroids.GameLogic.Weapon;
 
-namespace Asteroids.Player
+namespace Asteroids.GameLogic.Player
 {
     public interface IWeaponController
     {

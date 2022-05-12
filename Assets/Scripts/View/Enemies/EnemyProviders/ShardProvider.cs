@@ -1,7 +1,8 @@
 ﻿using Asteroids.GameLogic;
+using Asteroids.GameLogic.Enemies;
 using UnityEngine;
 
-namespace Asteroids.Enemies.EnemyProviders
+namespace Asteroids.View.Enemies
 {
     public class ShardProvider : MonoBehaviour, IEnemyProvider
     {

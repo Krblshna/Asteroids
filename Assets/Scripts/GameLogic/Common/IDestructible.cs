@@ -1,4 +1,4 @@
-﻿namespace Asteroids.Common
+﻿namespace Asteroids.GameLogic.Common
 {
     public interface IDestructible
     {

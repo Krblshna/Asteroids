@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 
-namespace Asteroids.Utility
+namespace Asteroids.GameLogic.Utility
 {
     public class Utils : Singleton<Utils>
     {

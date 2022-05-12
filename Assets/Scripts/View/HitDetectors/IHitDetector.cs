@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using Asteroids.Common;
+using Asteroids.GameLogic.Common;
 
-namespace Asteroids.HitDetectors
+namespace Asteroids.View.HitDetectors
 {
     public interface IHitDetector
     {

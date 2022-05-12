@@ -1,8 +1,7 @@
-﻿using Asteroids.Common;
-using Asteroids.Statistics;
-using UnityEngine;
+﻿using Asteroids.GameLogic.Common;
+using Asteroids.GameLogic.Statistics;
 
-namespace Asteroids.Actions
+namespace Asteroids.GameLogic.Actions
 {
     public class StatAction : IAction
     {

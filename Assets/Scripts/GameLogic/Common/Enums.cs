@@ -1,4 +1,4 @@
-﻿namespace Asteroids.Common
+﻿namespace Asteroids.GameLogic.Common
 {
     public enum EffectType { DeathBig, DeathMiddle, DeathMini }
     public enum WeaponType { Gun, Laser}

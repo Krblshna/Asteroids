@@ -1,4 +1,4 @@
-﻿namespace Asteroids.Movers
+﻿namespace Asteroids.GameLogic.Movers
 {
     public class SimpleMoveData
     {

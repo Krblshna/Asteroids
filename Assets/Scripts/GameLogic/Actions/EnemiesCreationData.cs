@@ -1,6 +1,6 @@
-﻿using Asteroids.Common;
+﻿using Asteroids.GameLogic.Common;
 
-namespace Asteroids.Actions
+namespace Asteroids.GameLogic.Actions
 {
     public class EnemiesCreationData
     {

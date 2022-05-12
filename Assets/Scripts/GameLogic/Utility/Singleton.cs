@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Asteroids.Utility
+namespace Asteroids.GameLogic.Utility
 {
 	public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {

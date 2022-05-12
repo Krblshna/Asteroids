@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Asteroids.Common;
 using Asteroids.GameLogic;
-using Asteroids.Utility;
+using Asteroids.GameLogic.Common;
+using Asteroids.GameLogic.Providers;
+using Asteroids.View.Pool;
 using UnityEngine;
 
-namespace Asteroids.Effect
+namespace Asteroids.View.Effect
 {
     public class EffectsManager : MonoBehaviour, IEffectsManager
     {

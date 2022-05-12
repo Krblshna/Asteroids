@@ -1,7 +1,6 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Asteroids.GameLogic
+namespace Asteroids.GameLogic.Enemies
 {
     public interface IFactory<T>
     {

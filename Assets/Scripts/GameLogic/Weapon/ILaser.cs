@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Asteroids.Weapon
+namespace Asteroids.GameLogic.Weapon
 {
     public interface ILaser : IWeapon
     {

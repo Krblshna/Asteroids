@@ -1,7 +1,6 @@
-﻿using Asteroids.Common;
-using Asteroids.Weapon;
+﻿using Asteroids.GameLogic.Common;
 
-namespace Asteroids.Statistics
+namespace Asteroids.GameLogic.Statistics
 {
     public interface IGamePoints
     {

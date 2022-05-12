@@ -1,8 +1,8 @@
 ﻿using System;
-using Asteroids.Common;
+using Asteroids.GameLogic.Common;
 using UnityEngine;
 
-namespace Asteroids.Weapon
+namespace Asteroids.View.Weapon
 {
     public interface IBullet
     {

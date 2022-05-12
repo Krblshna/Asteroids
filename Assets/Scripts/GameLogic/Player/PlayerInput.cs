@@ -1,9 +1,8 @@
 ﻿using System;
-using Asteroids.Common;
+using Asteroids.GameLogic.Common;
 using Asteroids.Input;
-using UnityEngine;
 
-namespace Asteroids.Player
+namespace Asteroids.GameLogic.Player
 {
     public class PlayerInput : IInput
     {

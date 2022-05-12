@@ -1,10 +1,8 @@
-﻿using System;
-using Asteroids.Common;
-using Asteroids.Enemies;
+﻿using Asteroids.GameLogic.Providers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Asteroids.Actions
+namespace Asteroids.GameLogic.Actions
 {
     public class CreateEnemyAction : IAction
     {

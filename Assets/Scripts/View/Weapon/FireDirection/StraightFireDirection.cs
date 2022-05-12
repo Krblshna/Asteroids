@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Asteroids.Weapon.FireDirection
+namespace Asteroids.View.Weapon
 {
     public class StraightFireDirection : MonoBehaviour, IFireDirection
     {

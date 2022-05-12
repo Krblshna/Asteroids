@@ -1,7 +1,7 @@
-﻿using Asteroids.Common;
+﻿using Asteroids.GameLogic.Common;
 using UnityEngine;
 
-namespace Asteroids.Effect
+namespace Asteroids.View.Effect
 {
     public interface IEffectsManager
     {

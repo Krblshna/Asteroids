@@ -1,8 +1,8 @@
-﻿using Asteroids.Actions;
-using Asteroids.Common;
-using Asteroids.Movers;
+﻿using Asteroids.GameLogic.Actions;
+using Asteroids.GameLogic.Common;
+using Asteroids.GameLogic.Movers;
 
-namespace Asteroids.GameLogic
+namespace Asteroids.GameLogic.Enemies
 {
     public class UFO : IEnemy
     {

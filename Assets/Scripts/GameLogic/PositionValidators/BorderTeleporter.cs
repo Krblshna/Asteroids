@@ -1,7 +1,7 @@
-﻿using Asteroids.Utility;
+﻿using Asteroids.GameLogic.Utility;
 using UnityEngine;
 
-namespace Asteroids.PositionValidators
+namespace Asteroids.GameLogic.PositionValidators
 {
     public class BorderValidator : IBorderValidator
     {

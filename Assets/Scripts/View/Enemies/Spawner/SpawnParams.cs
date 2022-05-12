@@ -1,8 +1,8 @@
 ﻿using System;
-using Asteroids.Common;
+using Asteroids.GameLogic.Common;
 using UnityEngine;
 
-namespace Asteroids.Enemies
+namespace Asteroids.View.Enemies
 {
     [System.Serializable]
     public class SpawnParams

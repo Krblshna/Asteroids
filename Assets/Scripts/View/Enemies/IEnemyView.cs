@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Asteroids.Enemies
+namespace Asteroids.View.Enemies
 {
     public interface IEnemyView
     {

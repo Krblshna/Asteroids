@@ -1,10 +1,8 @@
-﻿using Asteroids.Common;
-using Asteroids.Player;
-using Asteroids.Utility;
-using Asteroids.Weapon.FireDirection;
+﻿using Asteroids.GameLogic.Common;
+using Asteroids.GameLogic.Weapon;
 using UnityEngine;
 
-namespace Asteroids.Weapon
+namespace Asteroids.View.Weapon
 {
     public class Laser : MonoBehaviour, IWeaponView
     {

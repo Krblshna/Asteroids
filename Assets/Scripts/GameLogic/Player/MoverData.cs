@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Asteroids.Player
+namespace Asteroids.GameLogic.Player
 {
     public class MoverData
     {

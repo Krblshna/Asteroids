@@ -1,4 +1,4 @@
-﻿namespace Asteroids.Effect
+﻿namespace Asteroids.View.Pool
 {
     public interface IEffectPool
     {

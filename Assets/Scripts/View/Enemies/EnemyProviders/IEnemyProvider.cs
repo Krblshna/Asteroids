@@ -1,6 +1,6 @@
-﻿using Asteroids.GameLogic;
+﻿using Asteroids.GameLogic.Enemies;
 
-namespace Asteroids.Enemies.EnemyProviders
+namespace Asteroids.View.Enemies
 {
     public interface IEnemyProvider
     {

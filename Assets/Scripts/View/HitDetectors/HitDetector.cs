@@ -1,9 +1,9 @@
 ﻿using System;
-using Asteroids.Common;
-using Asteroids.FriendlyFire;
+using Asteroids.GameLogic.Common;
+using Asteroids.GameLogic.FriendlyFire;
 using UnityEngine;
 
-namespace Asteroids.HitDetectors
+namespace Asteroids.View.HitDetectors
 {
     public class HitDetector : MonoBehaviour, IHitDetector
     {

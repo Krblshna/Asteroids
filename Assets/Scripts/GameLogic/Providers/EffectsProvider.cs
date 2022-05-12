@@ -1,8 +1,8 @@
 ﻿using System;
-using Asteroids.Common;
+using Asteroids.GameLogic.Common;
 using UnityEngine;
 
-namespace Asteroids.Effect
+namespace Asteroids.GameLogic.Providers
 {
     public class EffectsProvider : IEffectsProvider
     {

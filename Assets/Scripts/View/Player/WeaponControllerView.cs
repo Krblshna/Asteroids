@@ -1,8 +1,8 @@
-﻿using Asteroids.Common;
-using Asteroids.Weapon;
+﻿using Asteroids.GameLogic.Player;
+using Asteroids.View.Weapon;
 using UnityEngine;
 
-namespace Asteroids.Player
+namespace Asteroids.View.Player
 {
     public class WeaponControllerView : MonoBehaviour
     {

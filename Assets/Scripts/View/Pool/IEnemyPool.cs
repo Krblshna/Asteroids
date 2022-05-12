@@ -1,4 +1,6 @@
-﻿namespace Asteroids.Enemies
+﻿using Asteroids.View.Enemies;
+
+namespace Asteroids.View.Pool
 {
     public interface IEnemyPool
     {

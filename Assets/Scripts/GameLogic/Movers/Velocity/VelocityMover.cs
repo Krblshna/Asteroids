@@ -1,7 +1,7 @@
-﻿using Asteroids.PositionValidators;
+﻿using Asteroids.GameLogic.PositionValidators;
 using UnityEngine;
 
-namespace Asteroids.Player
+namespace Asteroids.GameLogic.Movers
 {
     public class VelocityMover : IVelocityMover
     {

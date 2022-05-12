@@ -1,12 +1,7 @@
-﻿using System;
-using Asteroids.Actions;
-using Asteroids.Common;
-using Asteroids.Effect;
-using Asteroids.Utility;
-using Asteroids.Weapon;
-using UnityEngine;
+﻿using Asteroids.GameLogic.Actions;
+using Asteroids.GameLogic.Common;
 
-namespace Asteroids.Player
+namespace Asteroids.GameLogic.Player
 {
     public class Player : IPlayer
     {

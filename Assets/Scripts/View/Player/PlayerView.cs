@@ -1,16 +1,14 @@
 ﻿using System;
-using Asteroids.Common;
-using Asteroids.Effect;
 using Asteroids.GameLogic;
-using Asteroids.GameManagement;
-using Asteroids.HitDetectors;
-using Asteroids.Utility;
-using Asteroids.Weapon;
+using Asteroids.GameLogic.Common;
+using Asteroids.GameLogic.Player;
+using Asteroids.GameLogic.Weapon;
+using Asteroids.View.HitDetectors;
 using UnityEngine;
 
-namespace Asteroids.Player
+namespace Asteroids.View.Player
 {
-    public class PlayerView : MonoBehaviour, IFollowable
+    public class PlayerView : MonoBehaviour, IFollowable, IPlayerView
     {
         public bool Active => gameObject.activeSelf;
         public Vector3 GetPos() => transform.position;

@@ -1,7 +1,7 @@
-﻿using Asteroids.Common;
+﻿using Asteroids.GameLogic.Common;
 using UnityEngine;
 
-namespace Asteroids.Enemies
+namespace Asteroids.View.Enemies
 {
     public interface IEnemyCreator
     {

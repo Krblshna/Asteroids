@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Asteroids.Effect
+namespace Asteroids.View.Effect
 {
     public class ParticleEffect : MonoBehaviour, IEffect
     {

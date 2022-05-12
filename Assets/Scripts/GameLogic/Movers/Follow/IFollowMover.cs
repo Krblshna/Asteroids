@@ -1,11 +1,8 @@
-﻿using Asteroids.Common;
-using UnityEngine;
-
-namespace Asteroids.Movers
+﻿namespace Asteroids.GameLogic.Movers
 {
     public interface IFollowMover
     {
-        void StartFollow(IFollowable followable, float velocity);
+        void Move();
         void Update();
     }
 }

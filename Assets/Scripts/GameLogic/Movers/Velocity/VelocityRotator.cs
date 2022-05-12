@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace Asteroids.Player
+namespace Asteroids.GameLogic.Movers
 {
     public class VelocityRotator : IVelocityRotator
     {
-        private Transform _transform;
+        private readonly Transform _transform;
 
         public VelocityRotator(Transform transform)
         {

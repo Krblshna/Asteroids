@@ -1,6 +1,6 @@
-﻿using Asteroids.Common;
+﻿using Asteroids.GameLogic.Common;
 
-namespace Asteroids.Player
+namespace Asteroids.GameLogic.Player
 {
     public interface IInput
     {

@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
-namespace Asteroids.Utility
+namespace Asteroids.GameLogic.Utility
 {
-    //FIXME change name
     public static class ScreenData
     {
         public static float MinY { get; }

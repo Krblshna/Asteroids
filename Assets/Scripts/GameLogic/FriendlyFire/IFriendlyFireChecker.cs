@@ -1,6 +1,6 @@
-﻿using Asteroids.Common;
+﻿using Asteroids.GameLogic.Common;
 
-namespace Asteroids.FriendlyFire
+namespace Asteroids.GameLogic.FriendlyFire
 {
     public interface IFriendlyFireChecker
     {
